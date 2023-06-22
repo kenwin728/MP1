@@ -4,19 +4,22 @@ const users = [
     { name: "User 3", photo: "PF3.jpg" }
   ];
 
-const profilePhotosContainer = document.getElementById("profilePhotos");
-  const usernameElement = document.querySelector(".username");
-  const username = usernameElement.textContent;
-  const user = users.find(user => user.name === username);
-
-  if (user) {
-    const img = document.createElement("img");
-    img.src = user.photo;
-    img.alt = `${user.name}'s Profile Photo`;
-
-    profilePhotosContainer.appendChild(img);
+  const profilePhotosContainers = document.querySelectorAll(".profilePhotos");
+  const usernameElements = document.querySelectorAll(".username");
+  
+  for (let i = 0; i < usernameElements.length; i++) {
+    const username = usernameElements[i].querySelector("a").textContent;
+    const user = users.find(user => user.name === username);
+  
+    if (user) {
+      const img = document.createElement("img");
+      img.src = user.photo;
+      img.alt = `${user.name}'s Profile Photo`;
+  
+      profilePhotosContainers[i].appendChild(img);
+    }
   }
 
-var img1 = document.getElementById("profilePhotos");
+/*var img1 = document.getElementById("profilePhotos");
 img1.src = "PF2.jpg";
-img1.appendChild(img1);
+img1.appendChild(img1);*/
