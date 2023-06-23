@@ -1,7 +1,9 @@
 const users = [
     { name: "Bob", photo: "PF1.jpg" },
     { name: "Marcus", photo: "PF2.jpg" },
-    { name: "User 3", photo: "PF3.jpg" }
+    { name: "Johnson", photo: "PF3.jpg" },
+    { name: "Kenwin", photo: "profile1.jpg" },
+    { name: "Josh", photo: "profile5.jpg" }
   ];
 
   const profilePhotosContainers = document.querySelectorAll(".profilePhotos");

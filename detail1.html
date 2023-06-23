@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Forum</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="posts.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital@1&display=swap" rel="stylesheet">
@@ -23,23 +23,24 @@
 
             <div class="body">
                 <div class="authors">
-                    <div class="username"><a href="">Bob</a></div>
+                    <div class="username"><a href="profile2.html">Bob</a></div>
                     <div class="profilePhotos"></div>
                     <div><u>June 20 2023</u></div>
                 </div>
                 <div class="content">
-                    Is Python worth learning in 2023?
+                    Is Python still worth learning in 2023?
                     <br>
                     <br>
-                    <div class="container">
-                        <button id="upvoteButton">Upvote</button>
-                        <span id="voteCount">0</span>
+                    <div class="votecontainer">
+                        <button class="upvoteButton">Upvote</button>
+                        <span class="upvoteCount">0</span>
+                        <button class="downvoteButton">Downvote</button>
+                        <span class="downvoteCount">0</span>
                       </div>
                     <div class="comment">
                         <button onclick="showComment()">Comment</button>
                     </div>
                 </div>
-                
             </div>
         </div>
 
@@ -53,7 +54,7 @@
         <div class="comments-container">
             <div class="body">
                 <div class="authors">
-                    <div class="username"><a href="">Marcus</a></div>
+                    <div class="username"><a href="profile4.html">Marcus</a></div>
                     <div class="profilePhotos"></div>
                     <div><u>June 20 2023</u></div>
                 </div>
@@ -61,6 +62,12 @@
                     Yes.
                     <br>
                     <br>
+                    <div class="votecontainer">
+                        <button class="upvoteButton">Upvote</button>
+                        <span class="upvoteCount">0</span>
+                        <button class="downvoteButton">Downvote</button>
+                        <span class="downvoteCount">0</span>
+                      </div>
                     <div class="comment">
                         <button onclick="showReply()">Reply</button>
                     </div>
@@ -74,6 +81,5 @@
         </div>
     </div>
     <script src="main.js"></script>
-    <script src="upvote.js"></script>
 </body>
 </html>

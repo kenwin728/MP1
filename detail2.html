@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Forum</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="posts.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital@1&display=swap" rel="stylesheet">
@@ -22,17 +22,19 @@
 
             <div class="body">
                 <div class="authors">
-                    <div class="username"><a href="">Johnson</a></div>
-                    <img src="https://cdn.pixabay.com/photo/2015/11/06/13/27/ninja-1027877_960_720.jpg" alt="">
+                    <div class="username"><a href="profile3.html">Johnson</a></div>
+                    <div class="profilePhotos"></div>
                     <div><u>June 20 2023</u></div>
                 </div>
                 <div class="content">
                     Many say that mobile gamers aren't real gamers because FPS games in mobile have aim assist. For me it doesn't really give that big of an advantage.
                     <br>
                     <br>
-                    <div class="container">
-                        <button id="upvoteButton">Upvote</button>
-                        <span id="voteCount">0</span>
+                    <div class="votecontainer">
+                        <button class="upvoteButton">Upvote</button>
+                        <span class="upvoteCount">0</span>
+                        <button class="downvoteButton">Downvote</button>
+                        <span class="downvoteCount">0</span>
                       </div>
                     <div class="comment">
                         <button onclick="showComment()">Comment</button>
@@ -51,14 +53,20 @@
         <div class="comments-container">
             <div class="body">
                 <div class="authors">
-                    <div class="username"><a href="">Kenwin</a></div>
-                    <img src="https://cdn.pixabay.com/photo/2015/11/06/13/27/ninja-1027877_960_720.jpg" alt="">
+                    <div class="username"><a href="profile1.html">Kenwin</a></div>
+                    <div class="profilePhotos"></div>
                     <div><u>June 20 2023</u></div>
                 </div>
                 <div class="content">
                     I have never played mobile games yet so I don't know.
                     <br>
                     <br>
+                    <div class="votecontainer">
+                        <button class="upvoteButton">Upvote</button>
+                        <span class="upvoteCount">0</span>
+                        <button class="downvoteButton">Downvote</button>
+                        <span class="downvoteCount">0</span>
+                      </div>
                     <div class="comment">
                         <button onclick="showReply()">Reply</button>
                     </div>
@@ -72,6 +80,5 @@
         </div>
     </div>
     <script src="main.js"></script>
-    <script src="upvote.js"></script>
 </body>
 </html>
