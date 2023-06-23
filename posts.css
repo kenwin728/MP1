@@ -159,6 +159,44 @@ h1{
 .comment-area input:hover{
     border: solid 1px #000000;
 }
+/* post button */
+.post{
+    text-align: center;
+}
+.post button{
+    text-decoration: none;
+    background-color: red;
+    color: white;
+}
+/* post section */
+.post-area{
+    margin-bottom:50px;
+}
+
+.post-area textarea{
+    width: 100%;
+    min-height: 100px;
+    padding: 10px;
+    margin-block: 10px;
+}
+
+.post-area input{
+    float: right;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#title{
+    float: left;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.post-area input:hover{
+    border: solid 1px #000000;
+}
+
 
 .hide{
     display: none;
