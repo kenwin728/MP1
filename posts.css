@@ -178,7 +178,7 @@ h1{
     background-color: red;
     margin-right: 10px;
     margin-bottom: 20px;
-    color: white;;
+    color: white;
 }
 /* post section */
 .post-area{
@@ -219,14 +219,23 @@ h1{
 .votecontainer {
     text-align: center;
     margin-top: 10px;
-  }
+}
   
-  button {
+button {
     padding: 5px 10px;
     font-size: 9px;
-  }
+}
   
-  .upvoteCount, .downvoteCount{
+.upvoteCount, .downvoteCount{
     font-size: 12px;
     font-weight: bold;
-  }
+}
+
+html::-webkit-scrollbar{
+    width: 12px;
+}
+
+html::-webkit-scrollbar-thumb{
+    background: linear-gradient(transparent,rgb(241, 11, 157));
+    border-radius: 6px;
+}
