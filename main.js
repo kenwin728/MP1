@@ -13,5 +13,10 @@ function showReply(){
 //Post
 function showPost(){
     var postArea = document.getElementById("post-area");
-    postArea.classList.remove("hide");
+    postArea.style.display = "block"
+}
+
+function removePost(){
+    let postArea = document.getElementById("post-area");
+    postArea.style.display = "none"
 }
