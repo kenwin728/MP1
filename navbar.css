@@ -79,3 +79,30 @@ header{
     transform-origin: left;
 }
 
+.search-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  input[type="text"] {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: none;
+  }
+  
+  button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #e540d7;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 5px;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #480057;
+  }
+
