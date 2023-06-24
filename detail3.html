@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital@1&display=swap" rel="stylesheet">
     <script src="prophoto.js" defer></script>
+
 </head>
 
 <body>
@@ -38,6 +39,7 @@
                         <span class="downvoteCount">0</span>
                       </div>
                     <div class="comment">
+                        <button onclick="removeComment()">X</button>
                         <button onclick="showComment()">Comment</button>
                     </div>
                 </div>
@@ -69,6 +71,7 @@
                         <span class="downvoteCount">0</span>
                       </div>
                     <div class="comment">
+                        <button onclick="removeReply()">X</button>
                         <button onclick="showReply()">Reply</button>
                     </div>
                 </div>
@@ -78,6 +81,11 @@
         <div class="comment-area hide" id="reply-area">
             <textarea name="reply" id="" placeholder="reply here ... "></textarea>
             <input type="submit" value="submit">
+        </div>
+        <div class="container">
+            <a id="Register" href="posts.html"> 
+                <input type="button" value="Back to mainpage..."> 
+            </a>
         </div>
     </div>
     <script src="main.js"></script>
