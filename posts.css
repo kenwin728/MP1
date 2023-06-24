@@ -6,7 +6,7 @@ html{
     font-size: 14px;
     font-family: 'Titillium Web', sans-serif;
     background-color:rgb(0,0,0);
-    color:#FEFEFE;
+    color: #FEFEFE;
 }
 
 a{
@@ -22,8 +22,7 @@ h1{
 
 .container{
     position: relative;
-    top: 100px;
-    margin: 20px;
+    margin: 20px 50px 50px 50px;
     padding: 20px;
 }
 
@@ -159,14 +158,27 @@ h1{
 .comment-area input:hover{
     border: solid 1px #000000;
 }
-/* post button */
+/* make a post button */
+.makepostcontainer{
+    background-color: #131415;
+    position: relative;
+    border-radius: 20px;
+    top: 20px;
+    width: 50%;
+    margin: auto;
+    padding: 20px;
+}
+
 .post{
     text-align: center;
+    margin-bottom: 10px;
 }
 .post button{
     text-decoration: none;
     background-color: red;
-    color: white;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    color: white;;
 }
 /* post section */
 .post-area{
@@ -176,8 +188,9 @@ h1{
 .post-area textarea{
     width: 100%;
     min-height: 100px;
-    padding: 10px;
-    margin-block: 10px;
+    padding: 20px;
+    margin-block: 20px;
+    border-radius: 10px;
 }
 
 .post-area input{
@@ -185,6 +198,7 @@ h1{
     padding: 10px;
     border-radius: 10px;
     cursor: pointer;
+    color: black;
 }
 
 #title{
@@ -196,7 +210,6 @@ h1{
 .post-area input:hover{
     border: solid 1px #000000;
 }
-
 
 .hide{
     display: none;
@@ -217,12 +230,3 @@ h1{
     font-size: 12px;
     font-weight: bold;
   }
-
-html::-webkit-scrollbar{
-    width: 12px;
-}
-
-html::-webkit-scrollbar-thumb{
-    background: linear-gradient(transparent,rgb(241, 11, 157));
-    border-radius: 6px;
-}
