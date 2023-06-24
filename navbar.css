@@ -5,6 +5,8 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+    color:#FEFEFE;
+
 }
 
 body{
@@ -80,20 +82,23 @@ header{
 }
 
 .search-container {
+    margin-left: 300px;
+    width: 40%;
     display: flex;
-    align-items: center;
+    
   }
   
   input[type="text"] {
     padding: 10px;
     font-size: 16px;
     border-radius: 4px;
+    width: 60%;
     border: none;
   }
   
   button[type="submit"] {
     padding: 10px 20px;
-    background-color: #e540d7;
+    background-color: purple;
     color: white;
     border: none;
     border-radius: 4px;
