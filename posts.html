@@ -26,16 +26,8 @@
             <a id="loginRegister" href="login.html"> Login</a>
         </nav>
     </header>  
-    
+
     <div class="container">
-        <div class="post">
-            <button onclick="showPost()">Make a Post</button>
-        </div>
-        <div class="post-area hide" id="post-area">
-            <input type="text" id="title" placeholder="Title...">
-            <textarea name="post" id="" placeholder="post here ... "></textarea>
-            <input type="submit" value="submit">
-        </div>
         <!--Display posts table-->
         <div class="posts-table">
             <div class="table-head">
@@ -129,6 +121,19 @@
             </div>
             <!--ends here-->
         </div>
+
+        <div class="makepostcontainer">
+            <div class="post">
+                <button onclick="showPost()">Make a Post</button>
+                <button id= "remove" onclick="removePost()">Cancel...</button>
+            </div>
+            <div class="post-area hide" id="post-area">
+                <input type="text" id="title" placeholder="Title...">
+                <textarea name="post" id="" placeholder="Insert text here... "></textarea>
+                <input type="submit" value="submit">
+            </div>
+        </div>
+    
     <script src="main.js"></script>
 </body>
 </html>
