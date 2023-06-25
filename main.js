@@ -22,10 +22,10 @@ function removeReply(){
 //Post
 function showPost(){
     var postArea = document.getElementById("post-area");
-    postArea.style.display = "block"
+    postArea.style.display = "block";
 }
 
 function removePost(){
     let postArea = document.getElementById("post-area");
-    postArea.style.display = "none"
+    postArea.style.display = "none";
 }
