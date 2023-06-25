@@ -39,8 +39,8 @@
                         <span class="downvoteCount">0</span>
                       </div>
                     <div class="comment">
-                        <button onclick="removeComment()">X</button>
-                        <button onclick="showComment()">Comment</button>
+                        <button class= "x-btn" onclick="removeComment()">X</button>
+                        <button class= "reply-btn" onclick="showComment()">Comment</button>
                     </div>
                 </div>
             </div>
@@ -49,7 +49,7 @@
         <!--Comment Area-->
         <div class="comment-area hide" id="comment-area">
             <textarea name="comment" id="" placeholder="comment here ... "></textarea>
-            <input type="submit" value="submit">
+            <input type="submit" value="submit" class="submit-btn">
         </div>
 
         <!--Comments Section-->
@@ -71,8 +71,8 @@
                         <span class="downvoteCount">0</span>
                       </div>
                     <div class="comment">
-                        <button onclick="removeReply()">X</button>
-                        <button onclick="showReply()">Reply</button>
+                        <button class= "x-btn" onclick="removeReply()">X</button>
+                        <button class= "reply-btn" onclick="showReply()">Reply</button>
                     </div>
                 </div>
             </div>
@@ -80,11 +80,11 @@
         <!--Reply Area-->
         <div class="comment-area hide" id="reply-area">
             <textarea name="reply" id="" placeholder="reply here ... "></textarea>
-            <input type="submit" value="submit">
+            <input type="submit" value="submit" class="submit-btn">
         </div>
         <div class="container">
             <a id="Register" href="posts.html"> 
-                <input type="button" value="Back to mainpage..."> 
+                <input type="button" class="mainpage-btn" value="Back to mainpage..."> 
             </a>
         </div>
     </div>

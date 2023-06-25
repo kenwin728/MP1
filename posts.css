@@ -131,7 +131,6 @@ h1{
     border:none;
     padding:10px;
     font-weight: bolder;
-    box-shadow: 4px 6px #fff;
     cursor: pointer;
     float: right;
 }
@@ -238,4 +237,89 @@ html::-webkit-scrollbar{
 html::-webkit-scrollbar-thumb{
     background: linear-gradient(transparent,rgb(241, 11, 157));
     border-radius: 6px;
+}
+
+.mainpage-btn{
+    color: #fff;
+    padding: 8px 22px;
+    border-radius: 6px;
+    background: #800080;
+    transition: all 0.2s ease;
+}
+
+.mainpage-btn:active{
+    transform: scale(0.96);
+}
+
+.submit-btn{
+    color: #fff;
+    padding: 8px 22px;
+    border-radius: 6px;
+    background: #96235d;
+    transition: all 0.2s ease;
+}
+
+.submit-btn:active{
+    transform: scale(0.96);
+}
+
+.upvoteButton{
+    color: #fff;
+    padding: 8px 22px;
+    border-radius: 6px;
+    background: #13b00b;
+    transition: all 0.2s ease;
+}
+
+.upvoteButton:active{
+    transform: scale(0.96);
+}
+
+.downvoteButton{
+    color: #fff;
+    padding: 8px 22px;
+    border-radius: 6px;
+    background: #a80808;
+    transition: all 0.2s ease;
+}
+
+.downvoteButton:active{
+    transform: scale(0.96);
+}
+
+.makepost-btn{
+    color: white;
+    padding: 8px 22px;
+    border-radius: 6px;
+    background: #96235d;
+    transition: all 0.2s ease;
+}
+
+.makepost-btn:active{
+    transform: scale(0.96);
+}
+
+.reply-btn{
+    color: black;
+    padding: 8px 22px;
+    margin-right: 5px;
+    border-radius: 6px;
+    background: #fff;
+    transition: all 0.2s ease;
+}
+
+.reply-btn:active{
+    transform: scale(0.96);
+}
+
+.x-btn{
+    color: black;
+    padding: 8px 22px;
+    border-radius: 6px;
+    background: #fff;
+    transition: all 0.2s ease;
+}
+
+.x-btn:active{
+    transform: scale(0.96);
 }
