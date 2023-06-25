@@ -174,7 +174,6 @@ h1{
 }
 .post button{
     text-decoration: none;
-    background-color: red;
     margin-right: 10px;
     margin-bottom: 20px;
     color: white;
@@ -321,5 +320,29 @@ html::-webkit-scrollbar-thumb{
 }
 
 .x-btn:active{
+    transform: scale(0.96);
+}
+
+.post-btn{
+    color: #fff;
+    padding: 8px 22px;
+    border-radius: 6px;
+    background: #FF0042;
+    transition: all 0.2s ease;
+}
+
+.post-btn:active{
+    transform: scale(0.96);
+}
+
+.cancel-btn{
+    color: #fff;
+    padding: 8px 22px;
+    border-radius: 6px;
+    background: #FF0042;
+    transition: all 0.2s ease;
+}
+
+.cancel-btn:active{
     transform: scale(0.96);
 }
