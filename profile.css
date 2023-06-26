@@ -23,7 +23,7 @@ body{
     position: relative;
     width: 350px;
     height: 450px;
-    background: #fff;
+    background: #292929;
     border-radius: 20px;
     box-shadow: 0 35px 80px rgba(0,0,0,0.15);
     transition: 0.5s;
@@ -81,7 +81,7 @@ body{
 .card .content .details h2{
     font-size: 1.25em;
     font-weight: 600;
-    color: #555;
+    color: #45f3ff;
     line-height: 1.2em;
 
 }
@@ -90,11 +90,12 @@ body{
     font-size: 0.75em;
     font-weight: 500;
     opacity: 0.5;
+    color: #fff
 }
 
 .card .content .details .data h3{
     font-size: 1em;
-    color: #555;
+    color: #45f3ff;
     line-height: 1.2em;
     font-weight: 600;
 }
@@ -103,8 +104,11 @@ body{
     font-size: 0.85em;
     font-weight: 400;
     opacity: 0.5;
+    color: #fff;
 }
-
+.card .content .details .posts h3{
+    color: #45f3ff;
+}
 .card .content .details .posts a{
     text-decoration: none;
 }
@@ -120,7 +124,7 @@ body{
 
 .card .content .details .posts a .post-info h3{
     font-size: 1em;
-    color: #555;
+    color: #45f3ff;
     line-height: 1.2em;
     font-weight: 600;
 }
@@ -129,4 +133,5 @@ body{
     font-size: 0.85em;
     font-weight: 400;
     opacity: 0.5;
+    color: #fff;
 }
