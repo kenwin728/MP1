@@ -100,6 +100,7 @@ header img{
     border-radius: 4px;
     width: 60%;
     border: none;
+    color: black;
   }
   
   button[type="submit"] {

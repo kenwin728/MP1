@@ -189,6 +189,7 @@ h1{
     padding: 20px;
     margin-block: 20px;
     border-radius: 10px;
+    color: black;
 }
 
 .post-area input{
@@ -196,7 +197,7 @@ h1{
     padding: 10px;
     border-radius: 10px;
     cursor: pointer;
-    color: black;
+    
 }
 
 #title{
@@ -204,9 +205,11 @@ h1{
     padding: 10px;
     border-radius: 10px;
     cursor: pointer;
+    color: black;
 }
 .post-area input:hover{
     border: solid 1px #000000;
+    color: black;
 }
 
 .hide{
