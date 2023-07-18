@@ -90,8 +90,9 @@ header img{
 .search-container {
     margin-left: 300px;
     width: 40%;
-    display: flex;
-    
+    justify-content: center;
+    align-items: center;
+    margin-right: auto;
   }
   
   input[type="text"] {

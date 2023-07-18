@@ -224,12 +224,97 @@ h1{
   
 button {
     padding: 5px 10px;
-    font-size: 9px;
+    font-size: 11px;
 }
   
-.upvoteCount, .downvoteCount{
-    font-size: 12px;
-    font-weight: bold;
+#likebtn{
+    color: #fff;
+    background: none;
+    border: none;
+    font-size: 18px;
+    padding: 0 5px;
+    margin: 10px;
+}
+
+#likebtn:active{
+    color: #004eff;
+    transform: scale(1.2);
+}
+
+#likebtn2{
+    color: #fff;
+    background: none;
+    border: none;
+    font-size: 18px;
+    padding: 0 5px;
+    margin: 10px;
+}
+
+#likebtn2:active{
+    color: #004eff;
+    transform: scale(1.2);
+}
+
+#dislikebtn{
+    color: #fff;
+    background: none;
+    border: none;
+    font-size: 18px;
+    padding: 0 3px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+#dislikebtn:active{
+    color: #004eff;
+    transform: scale(1.2);
+}
+
+#dislikebtn2{
+    color: #fff;
+    background: none;
+    border: none;
+    font-size: 18px;
+    padding: 0 3px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+#dislikebtn2:active{
+    color: #004eff;
+    transform: scale(1.2);
+}
+
+#input1{
+    border: none;
+    background: none;
+    color: #919191;
+    font-size: 18px;
+    pointer-events: none;
+}
+
+#input2{
+    border: none;
+    background: none;
+    color: #919191;
+    font-size: 18px;
+    pointer-events: none;
+}
+
+#input1_com{
+    border: none;
+    background: none;
+    color: #919191;
+    font-size: 18px;
+    pointer-events: none;
+}
+
+#input2_com{
+    border: none;
+    background: none;
+    color: #919191;
+    font-size: 18px;
+    pointer-events: none;
 }
 
 html::-webkit-scrollbar{
@@ -265,29 +350,6 @@ html::-webkit-scrollbar-thumb{
     transform: scale(0.96);
 }
 
-.upvoteButton{
-    color: #fff;
-    padding: 8px 22px;
-    border-radius: 6px;
-    background: #13b00b;
-    transition: all 0.2s ease;
-}
-
-.upvoteButton:active{
-    transform: scale(0.96);
-}
-
-.downvoteButton{
-    color: #fff;
-    padding: 8px 22px;
-    border-radius: 6px;
-    background: #a80808;
-    transition: all 0.2s ease;
-}
-
-.downvoteButton:active{
-    transform: scale(0.96);
-}
 
 .makepost-btn{
     color: white;
