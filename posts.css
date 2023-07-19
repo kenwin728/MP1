@@ -24,6 +24,7 @@ h1{
     position: relative;
     margin: 20px 50px 50px 50px;
     padding: 20px;
+    display: block;
 }
 
 
@@ -138,6 +139,7 @@ h1{
 /* comment section */
 .comment-area{
     margin-bottom:50px;
+    display: flex;
 }
 
 .comment-area textarea{
@@ -217,14 +219,14 @@ h1{
 }
 
 /* Upvote */
-.votecontainer {
-    text-align: center;
-    margin-top: 10px;
-}
   
 button {
     padding: 5px 10px;
     font-size: 11px;
+}
+.votecontainer #likebtn #likebtn2 #dislikebtn #dislikebtn2{
+    margin-bottom: 50px;
+    margin-left: auto;
 }
   
 #likebtn{
@@ -233,8 +235,9 @@ button {
     border: none;
     font-size: 18px;
     padding: 0 5px;
-    margin: 10px;
+    margin: 5px;
 }
+
 
 #likebtn:active{
     color: #004eff;
@@ -247,7 +250,7 @@ button {
     border: none;
     font-size: 18px;
     padding: 0 5px;
-    margin: 10px;
+    margin: 5px;
 }
 
 #likebtn2:active{
@@ -261,7 +264,7 @@ button {
     border: none;
     font-size: 18px;
     padding: 0 3px;
-    margin: 10px;
+    margin: 2px;
     cursor: pointer;
 }
 
@@ -276,7 +279,7 @@ button {
     border: none;
     font-size: 18px;
     padding: 0 3px;
-    margin: 10px;
+    margin: 2px;
     cursor: pointer;
 }
 
@@ -291,6 +294,7 @@ button {
     color: #919191;
     font-size: 18px;
     pointer-events: none;
+    width: 50px;
 }
 
 #input2{
@@ -299,6 +303,7 @@ button {
     color: #919191;
     font-size: 18px;
     pointer-events: none;
+    width: 50px;
 }
 
 #input1_com{
@@ -307,6 +312,7 @@ button {
     color: #919191;
     font-size: 18px;
     pointer-events: none;
+    width: 50px;
 }
 
 #input2_com{
@@ -315,6 +321,7 @@ button {
     color: #919191;
     font-size: 18px;
     pointer-events: none;
+    width: 50px;
 }
 
 html::-webkit-scrollbar{
