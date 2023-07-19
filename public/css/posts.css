@@ -1,0 +1,420 @@
+/* ########################################### */
+/*                 Global                      */
+/* ########################################### */
+
+html{
+    font-size: 14px;
+    font-family: 'Titillium Web', sans-serif;
+    background-color:rgb(0,0,0);
+    color: #FEFEFE;
+}
+
+a{
+    color:#FF0042;
+    font-weight: bolder;
+    text-decoration: none;
+}
+
+h1{
+    font-size:16px;
+    font-weight: bolder;
+}
+
+.container{
+    position: relative;
+    margin: 20px 50px 50px 50px;
+    padding: 20px;
+    display: block;
+}
+
+
+/* ########################################### */
+/*            posts.html                       */
+/* ########################################### */
+
+/* posts table's head  */
+.table-head{
+    display: flex;
+}
+
+.table-head div{
+    padding: 5px;
+    margin: 2px;
+    background-color: #2C2C2C;
+    font-weight: bold;
+}
+
+.table-head .status{
+    flex: 5%;
+}
+
+.table-head .subjects{
+    flex: 70%;
+}
+
+.table-head .replies{
+    flex: 10%;
+}
+
+.table-head .last-reply{
+    flex: 15%;
+}
+
+/* posts table's body  */
+
+.table-row{
+    display: flex;
+}
+
+.table-row .status, .table-row .subjects, .table-row .replies, .table-row .last-reply{
+    padding: 5px;
+    margin: 2px;
+    background-color: #131415;
+}
+
+.table-row .status{
+    flex: 5%;
+    font-size: 30px;
+    text-align: center;
+}
+
+.table-row .subjects{
+    flex: 70%;
+}
+
+.table-row .replies{
+    flex: 10%;
+}
+
+.table-row .last-reply{
+    flex: 15%;
+}
+
+
+
+/* ########################################### */
+/*            detail.html                      */
+/* ########################################### */
+
+.head{
+    display: flex;
+    background-color: #2C2C2C;
+    padding: 5px;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.authors{
+    flex: 20%;
+}
+
+.content{
+    flex: 80%;
+}
+
+.body{
+    display: flex;
+    background-color: #131415;
+    padding: 10px;
+    margin-top: 5px;
+}
+
+.body .authors .username{
+    font-size: 20px;
+}
+
+.body .authors img{
+    max-width: 50px;
+    max-height: 80px;
+}
+
+.body .content .comment button{
+    border:none;
+    padding:10px;
+    font-weight: bolder;
+    cursor: pointer;
+    float: right;
+}
+
+/* comment section */
+.comment-area{
+    margin-bottom:50px;
+    display: flex;
+}
+
+.comment-area textarea{
+    width: 100%;
+    min-height: 100px;
+    padding: 10px;
+    margin-block: 10px;
+}
+
+.comment-area input{
+    float: right;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.comment-area input:hover{
+    border: solid 1px #000000;
+}
+/* make a post button */
+.makepostcontainer{
+    background-color: #131415;
+    position: relative;
+    border-radius: 20px;
+    top: 20px;
+    width: 50%;
+    margin: auto;
+    padding: 20px;
+}
+
+.post{
+    text-align: center;
+    margin-bottom: 10px;
+}
+.post button{
+    text-decoration: none;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    color: white;
+}
+/* post section */
+.post-area{
+    margin-bottom:50px;
+}
+
+.post-area textarea{
+    width: 100%;
+    min-height: 100px;
+    padding: 20px;
+    margin-block: 20px;
+    border-radius: 10px;
+    color: black;
+}
+
+.post-area input{
+    float: right;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    
+}
+
+#title{
+    float: left;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: black;
+}
+.post-area input:hover{
+    border: solid 1px #000000;
+    color: black;
+}
+
+.hide{
+    display: none;
+}
+
+/* Upvote */
+  
+button {
+    padding: 5px 10px;
+    font-size: 11px;
+}
+.votecontainer #likebtn #likebtn2 #dislikebtn #dislikebtn2{
+    margin-bottom: 50px;
+    margin-left: auto;
+}
+  
+#likebtn{
+    color: #fff;
+    background: none;
+    border: none;
+    font-size: 18px;
+    padding: 0 5px;
+    margin: 5px;
+}
+
+
+#likebtn:active{
+    color: #004eff;
+    transform: scale(1.2);
+}
+
+#likebtn2{
+    color: #fff;
+    background: none;
+    border: none;
+    font-size: 18px;
+    padding: 0 5px;
+    margin: 5px;
+}
+
+#likebtn2:active{
+    color: #004eff;
+    transform: scale(1.2);
+}
+
+#dislikebtn{
+    color: #fff;
+    background: none;
+    border: none;
+    font-size: 18px;
+    padding: 0 3px;
+    margin: 2px;
+    cursor: pointer;
+}
+
+#dislikebtn:active{
+    color: #004eff;
+    transform: scale(1.2);
+}
+
+#dislikebtn2{
+    color: #fff;
+    background: none;
+    border: none;
+    font-size: 18px;
+    padding: 0 3px;
+    margin: 2px;
+    cursor: pointer;
+}
+
+#dislikebtn2:active{
+    color: #004eff;
+    transform: scale(1.2);
+}
+
+#input1{
+    border: none;
+    background: none;
+    color: #919191;
+    font-size: 18px;
+    pointer-events: none;
+    width: 50px;
+}
+
+#input2{
+    border: none;
+    background: none;
+    color: #919191;
+    font-size: 18px;
+    pointer-events: none;
+    width: 50px;
+}
+
+#input1_com{
+    border: none;
+    background: none;
+    color: #919191;
+    font-size: 18px;
+    pointer-events: none;
+    width: 50px;
+}
+
+#input2_com{
+    border: none;
+    background: none;
+    color: #919191;
+    font-size: 18px;
+    pointer-events: none;
+    width: 50px;
+}
+
+html::-webkit-scrollbar{
+    width: 12px;
+}
+
+html::-webkit-scrollbar-thumb{
+    background: linear-gradient(transparent,rgb(241, 11, 157));
+    border-radius: 6px;
+}
+
+.mainpage-btn{
+    color: #fff;
+    padding: 8px 22px;
+    border-radius: 6px;
+    background: #800080;
+    transition: all 0.2s ease;
+}
+
+.mainpage-btn:active{
+    transform: scale(0.96);
+}
+
+.submit-btn{
+    color: #fff;
+    padding: 8px 22px;
+    border-radius: 6px;
+    background: #96235d;
+    transition: all 0.2s ease;
+}
+
+.submit-btn:active{
+    transform: scale(0.96);
+}
+
+
+.makepost-btn{
+    color: white;
+    padding: 8px 22px;
+    border-radius: 6px;
+    background: #96235d;
+    transition: all 0.2s ease;
+}
+
+.makepost-btn:active{
+    transform: scale(0.96);
+}
+
+.reply-btn{
+    color: black;
+    padding: 8px 22px;
+    margin-right: 5px;
+    border-radius: 6px;
+    background: #fff;
+    transition: all 0.2s ease;
+}
+
+.reply-btn:active{
+    transform: scale(0.96);
+}
+
+.x-btn{
+    color: black;
+    padding: 8px 22px;
+    border-radius: 6px;
+    background: #fff;
+    transition: all 0.2s ease;
+}
+
+.x-btn:active{
+    transform: scale(0.96);
+}
+
+.post-btn{
+    color: #fff;
+    padding: 8px 22px;
+    border-radius: 6px;
+    background: #FF0042;
+    transition: all 0.2s ease;
+}
+
+.post-btn:active{
+    transform: scale(0.96);
+}
+
+.cancel-btn{
+    color: #fff;
+    padding: 8px 22px;
+    border-radius: 6px;
+    background: #FF0042;
+    transition: all 0.2s ease;
+}
+
+.cancel-btn:active{
+    transform: scale(0.96);
+}
