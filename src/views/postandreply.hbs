@@ -1,0 +1,50 @@
+<link rel="stylesheet" href="/static/css/posts.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital@1&display=swap" rel="stylesheet">
+<script src="/static/js/prophoto.js" defer></script>
+<div>
+    <!--Topic Section-->
+    <div class="topic-container">
+        <!--Original thread-->
+        <div class="head">
+            <div class="authors">Author</div>
+            <div class="content">Topic: {{post.title}} (Read {{post.views}} Times)</div>
+        </div>
+
+        <div class="body">
+            <div class="authors">
+                <div class="username"><a href="profile2.html">{{post.username}}</a></div>
+                <div class="profilePhotos"></div>
+                <div><u>June 20 2023</u></div>
+            </div>
+            <div class="content">
+                {{post.content}}
+                <br>
+                <br>
+                <div class="votecontainer">
+                    <button id="likebtn">
+                        <i class="fa fa-thumbs-up"></i>
+                    </button>
+                    <input type="number" id="input1" value="{{this.upvote}}" name="">
+                    <button id="dislikebtn">
+                        <i class="fa fa-thumbs-down"></i>
+                    </button>
+                    <input type="number" id="input2" value="{{this.downvote}}" name="">
+                    </div>
+                <div class="comment">
+                    <button class= "x-btn" onclick="removeComment()">X</button>
+                    <button class= "reply-btn" onclick="showComment()">Comment</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{#if replies}}
+    {{#each replies}}
+    {{> reply this}}
+    {{/each}}
+    {{else}}
+    <p> No replies to show...</p>
+    {{/if}}
+</div>
+<script src="/static/js/main.js"></script>

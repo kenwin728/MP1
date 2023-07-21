@@ -1,0 +1,28 @@
+<div class="comments-container">
+            <div class="body">
+                <div class="authors">
+                    <div class="username"><a href="profile4.html">{{this.username}}</a></div>
+                    <div class="profilePhotos"></div>
+                    <div><u>{{this.date}}</u></div>
+                </div>
+                <div class="content">
+                    {{this.content}}
+                    <br>
+                    <br>
+                    <div class="votecontainer">
+                        <button id="likebtn2" >
+                            <i class="fa fa-thumbs-up"></i>
+                        </button>
+                        <input type="number" id="input1_com" value="{{this.upvote}}" name="">
+                        <button id="dislikebtn2">
+                            <i class="fa fa-thumbs-down"></i>
+                        </button>
+                        <input type="number" id="input2_com" value="{{this.downvote}}" name="">
+                    </div>
+                    <div class="comment">
+                        <button  class= "x-btn" onclick="removeReply()">X</button>
+                        <button class= "reply-btn" onclick="showReply()">Reply</button>
+                    </div>
+                </div>
+            </div>
+        </div>

@@ -1,19 +1,24 @@
 import { Router } from 'express';
 import { getDb } from '../db/conn.js';
+import {ObjectId} from 'mongodb';
 
-const postsRouter = Router();
+const repliesRouter = Router();
 const db = getDb();
+const replies = db.collection("replies");
 const posts = db.collection("posts");
 
-postsRouter.get("/posts", async (req, res) => {
-    const postsArray = await posts.find({}).toArray();
-    res.render("posts", {
-        title: "Posts",
-        posts: postsArray
+repliesRouter.get("/replies/:postID", async (req, res) => {
+    const postID = new ObjectId(req.params.postID);
+    const repliesArray = await replies.find({postID: postID}).toArray();
+    const post = await posts.findOne({_id: postID});
+    res.render("postandreply", {
+        title: "postandreply",
+        post: post,
+        replies: repliesArray
     });
 });
 
-postsRouter.post("/posts", async (req, res) => {
+repliesRouter.post("/replies", async (req, res) => {
     console.log("POST request received for /posts");
     console.log(req.body);
     try {
@@ -32,4 +37,4 @@ postsRouter.post("/posts", async (req, res) => {
     }
 });
 
-export default postsRouter;
+export default repliesRouter;

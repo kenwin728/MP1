@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import postsRouter from './postsRouter.js';
+import repliesRouter from './repliesRouter.js';
 
 const router = Router();
 
@@ -18,6 +19,7 @@ router.get("/homepage", (req, res) => {
 });
 
 router.use(postsRouter);
+router.use(repliesRouter);
 
 router.use((req, res) => {
     res.render("error", {

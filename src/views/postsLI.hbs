@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="/static/css/posts.css">
-{{> navbar}}
+{{> navbarLI}}
 <div class="container">
     <!--Display posts table-->
     <div class="posts-table">
@@ -16,6 +16,18 @@
         {{else}}
         <p> No posts to show...</p>
         {{/if}}
+    </div>
+
+    <div class="makepostcontainer">
+        <div class="post">
+            <button class="post-btn" onclick="showPost()">Make a Post</button>
+            <button class="cancel-btn" onclick="removePost()">Cancel...</button>
+        </div>
+        <div class="post-area hide" id="post-area">
+            <input type="text" id="title" placeholder="Title...">
+            <textarea name="post" id="" placeholder="Insert text here... "></textarea>
+            <input type="submit" value="submit" class="makepost-btn">
+        </div>
     </div>
 </div>
 <script src="/static/js/main.js"></script>
