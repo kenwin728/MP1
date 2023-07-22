@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { getDb } from '../db/conn.js';
+import alert from 'alert';
 
 const loginRouter = Router();
 const db = getDb();
@@ -22,7 +23,7 @@ loginRouter.post("/login", async (req, res) => {
             res.json(`/posts/currentuser/${req.body.username}`);
         }
         else {
-            res.send(`Incorrect User or Password`);
+            alert("Incorrect User or Password");
         }
     
 
