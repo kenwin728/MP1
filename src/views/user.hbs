@@ -1,32 +1,32 @@
 <link rel="stylesheet" href="/static/css/profile.css">
 <div class="card">
-        <div class="imgBx">
-            <img src="{{user.photo}}" alt="">
-        </div>
-        <div class="content">
-            <div class="details">
-                <h2>{{user.username}}<br><span>{{user.description}}</span></h2>
-                <div class="data">
-                    <h3>{{user.numberofposts}}<br><span>Posts</span></h3>
-                </div>
-                <br>
-                <div class="posts">
-                    <h3>Latest Post</h3>
-                    <hr>
-                    <a href="detail4.html">
-                        <div class="post-title">{{post.title}}</div>
-                        <div class="post-info">
-                            <h3>{{post.replies}}<br><span>Replies</span></h3>
-                            <h3>{{post.views}}<br><span>Views</span></h3>
-                            <h3>{{post.date}}<br><span>Date</span></h3>
-                        </div>
-                        <div class="container">
-                            <a id="Register" href="/back"> 
-                                <input type="button" value="Back to mainpage..."> 
-                            </a>
-                        </div>
-                    </a>
-                </div>
+    <div class="imgBx">
+        <img src="{{user.photo}}" alt="">
+    </div>
+    <div class="content">
+        <div class="details">
+            <h2>{{user.username}}<br><span>{{user.description}}</span></h2>
+            <div class="data">
+                <h3>{{user.numberofposts}}<br><span>Posts</span></h3>
+            </div>
+            <br>
+            <div class="posts">
+                <h3>Latest Post</h3>
+                <hr>
+                <a href="detail4.html">
+                    <div class="post-title">{{post.title}}</div>
+                    <div class="post-info">
+                        <h3>{{post.replies}}<br><span>Replies</span></h3>
+                        <h3>{{post.views}}<br><span>Views</span></h3>
+                        <h3>{{post.date}}<br><span>Date</span></h3>
+                    </div>
+                    <div class="container">
+                        <a id="Register" href="/back"> 
+                            <input type="button" value="Back to mainpage..."> 
+                        </a>
+                    </div>
+                </a>
             </div>
         </div>
     </div>
+</div>

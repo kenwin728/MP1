@@ -10,6 +10,7 @@ import router from "./src/routes/index.js";
 // Database modules
 import { connectToMongo } from "./src/db/conn.js";
 
+
 async function main () {
     const __dirname = dirname(fileURLToPath(import.meta.url)); // directory URL
     const app = express();
