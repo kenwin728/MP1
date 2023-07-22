@@ -28,7 +28,8 @@ userRouter.get("/user/:username", async (req, res) => {
         res.render("user", {
             title: "user",
             user: user,
-            post: post
+            post: post,
+            link: "/posts"
         });
     } catch(err){
         console.error(err);
@@ -52,17 +53,20 @@ userRouter.get("/user/:username/currentuser/:currentuser", async (req, res) => {
             console.error(err);
         }
     }
-    try{
-        const username = req.params.username;
-        const user = await users.findOne({username: username});
-        const post = await posts.findOne({username: username}, {sort: {postID: -1}});
-        res.render("user", {
-            title: "user",
-            user: user,
-            post: post
-        });
-    } catch(err){
-        console.error(err);
+    else{
+        try{
+            const username = req.params.username;
+            const user = await users.findOne({username: username});
+            const post = await posts.findOne({username: username}, {sort: {postID: -1}});
+            res.render("user", {
+                title: "user",
+                user: user,
+                post: post,
+                link: "/posts/currentuser/" + req.params.currentuser
+            });
+        } catch(err){
+            console.error(err);
+        }
     }
     
 });
@@ -79,9 +83,7 @@ userRouter.post("/user/:username/upload", upload.single("image"),async (req, res
         {$set: {
             photo: newString
         }});
-
-        console.log(result);
-        res.send("Update Successful");
+        res.redirect(`/user/${req.params.username}/currentuser/${req.params.username}`)
     // or you can write
     // posts.insertOne(req.body);
     } catch (err) {

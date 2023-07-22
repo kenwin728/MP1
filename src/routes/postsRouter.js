@@ -10,7 +10,8 @@ postsRouter.get("/posts", async (req, res) => {
     const postsArray = await posts.find({}).toArray();
     res.render("posts", {
         title: "Posts",
-        posts: postsArray
+        posts: postsArray,
+        link: ""
     });
 });
 
@@ -20,7 +21,8 @@ postsRouter.get("/posts/currentuser/:username", async (req, res) => {
     res.render("postsLI", {
         title: "Posts",
         user: currentuser,
-        posts: postsArray
+        posts: postsArray,
+        link: "/currentuser/" + req.params.username
     });
 });
 
