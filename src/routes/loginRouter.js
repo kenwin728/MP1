@@ -11,5 +11,29 @@ loginRouter.get("/login", async (req, res) => {
     });
 });
 
+loginRouter.post("/login", async (req, res) => {
+    console.log("POST request received for /login");
+    console.log(req.body);
+    try {
+        const user = await users.findOne({username: req.body.username});
+        console.log(user);
+        if (user.password === req.body.password){
+            console.log("Successful Login");
+            res.json(`/posts/currentuser/${req.body.username}`);
+        }
+        else {
+            res.send(`Incorrect User or Password`);
+        }
+    
+
+    // or you can write
+    // posts.insertOne(req.body);
+    } catch (err) {
+        console.error(err);
+        res.sendStatus(500);
+    }
+});
+
+
 
 export default loginRouter;

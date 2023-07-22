@@ -1,41 +1,31 @@
-var users = [
-    { username: 'Josh', password: 'password1'},
-    { username: 'Kenwin', password: 'password2'},
-    { username: 'Johnson', password: 'password3'},
-    { username: 'Bob', password: 'password4'},
-    { username: 'Marcus', password: 'password5'}
-  ];
+const submitBtn = document.querySelector("#Login");
+const userForm = document.forms.loginUserForm;
 
-  
+submitBtn?.addEventListener("click", async (e) => {
+    e.preventDefault();
+    const formData = new FormData(userForm);
+    console.log('submit');
+    const myObj = { 
+        username: formData.get("username"),
+        password: formData.get("password")
+    };
+    console.log(myObj);
+    const jString = JSON.stringify(myObj);
+    console.log(jString);
 
-  // Register form submission handler
-  document.getElementById('registerForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-    var username = document.getElementById('username').value;
-    var password = document.getElementById('password').value;
-
-    // Check if the username is already taken
-    if (users.some(user => user.username === username)) {
-      document.getElementById('registerMessage').textContent = 'Username already taken';
-    } else {
-      // Add the new user to the database
-      users.push({ username: username, password: password });
-      document.getElementById('registerMessage').textContent = 'Registration successful';
+    try {
+        const response = await fetch("/login", {
+            method: 'POST',
+            body: jString,
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        const url = await response.text();
+        const path = JSON.parse(url);
+        location.href = path;
+        console.log(response);
+    } catch (err) {
+        console.error(err);
     }
-  });
-
-  // Login form submission handler
-  document.getElementById('loginForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-    var username = document.getElementById('loginUsername').value;
-    var password = document.getElementById('loginPassword').value;
-
-    // Check if the username and password match
-    if (users.some(user => user.username === username && user.password === password)) {
-      document.getElementById('loginMessage').textContent = 'Login successful';
-      location.href="posts.html";
-    } else {
-      document.getElementById('loginMessage').textContent = 'Invalid username or password';
-    }
-  });
-
+});
