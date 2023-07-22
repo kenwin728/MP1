@@ -10,7 +10,7 @@ const posts = db.collection("posts");
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, '/static/img')
+        cb(null, './public/img')
     },
     filename: (req, file, cb) => {
         console.log(file);
@@ -67,20 +67,21 @@ userRouter.get("/user/:username/currentuser/:currentuser", async (req, res) => {
     
 });
 
-userRouter.post("/user/:username/upload", upload.single('image'),async (req, res) => {
+userRouter.post("/user/:username/upload", upload.single("image"),async (req, res) => {
     console.log("POST request received for /upload");
-    console.log(req.file.path);
     const imagePath = req.file.path;
+    console.log(imagePath);
+    const newString = imagePath.replace("public", "static").replace(/\\/g, "/");
     try {
         const result = await users.updateOne({
             username: req.params.username
         },
         {$set: {
-            photo: imagePath
+            photo: newString
         }});
 
         console.log(result);
-        res.sendStatus(200);
+        res.send("Update Successful");
     // or you can write
     // posts.insertOne(req.body);
     } catch (err) {
