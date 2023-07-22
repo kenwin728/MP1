@@ -9,12 +9,13 @@ import exphbs from 'express-handlebars';
 import router from "./src/routes/index.js";
 // Database modules
 import { connectToMongo } from "./src/db/conn.js";
+import bodyParser from "body-parser";
 
 
 async function main () {
     const __dirname = dirname(fileURLToPath(import.meta.url)); // directory URL
     const app = express();
-
+    app.use(bodyParser.urlencoded({ extended: true }));
     app.use("/static", express.static(__dirname + "/public"));
     // Set handlebars as the express app's default view engine
     app.engine("hbs", exphbs.engine({

@@ -92,4 +92,23 @@ userRouter.post("/user/:username/upload", upload.single("image"),async (req, res
     }
 });
 
+userRouter.post("/user/:username/edit", async (req, res) => {
+    console.log("POST request received for /edit");
+    console.log(req.body.description);
+    try {
+        const result = await users.updateOne({
+            username: req.params.username
+        },
+        {$set: {
+            description: req.body.description
+        }});
+        res.redirect(`/user/${req.params.username}/currentuser/${req.params.username}`)
+    // or you can write
+    // posts.insertOne(req.body);
+    } catch (err) {
+        console.error(err);
+        res.sendStatus(500);
+    }
+});
+
 export default userRouter;
