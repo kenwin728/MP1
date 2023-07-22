@@ -11,7 +11,6 @@ postsRouter.get("/posts", async (req, res) => {
     res.render("posts", {
         title: "Posts",
         posts: postsArray,
-        link: ""
     });
 });
 
@@ -22,7 +21,7 @@ postsRouter.get("/posts/currentuser/:username", async (req, res) => {
         title: "Posts",
         user: currentuser,
         posts: postsArray,
-        link: "/currentuser/" + req.params.username
+        additionalVariable: req.params.username
     });
 });
 

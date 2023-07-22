@@ -29,7 +29,8 @@ userRouter.get("/user/:username", async (req, res) => {
             title: "user",
             user: user,
             post: post,
-            link: "/posts"
+            link: "/posts",
+            additionalLink: ""
         });
     } catch(err){
         console.error(err);
@@ -62,7 +63,8 @@ userRouter.get("/user/:username/currentuser/:currentuser", async (req, res) => {
                 title: "user",
                 user: user,
                 post: post,
-                link: "/posts/currentuser/" + req.params.currentuser
+                link: `/posts/currentuser/${req.params.currentuser}`,
+                additionalLink: `/currentuser/${req.params.currentuser}`
             });
         } catch(err){
             console.error(err);
@@ -84,8 +86,6 @@ userRouter.post("/user/:username/upload", upload.single("image"),async (req, res
             photo: newString
         }});
         res.redirect(`/user/${req.params.username}/currentuser/${req.params.username}`)
-    // or you can write
-    // posts.insertOne(req.body);
     } catch (err) {
         console.error(err);
         res.sendStatus(500);
@@ -103,8 +103,6 @@ userRouter.post("/user/:username/edit", async (req, res) => {
             description: req.body.description
         }});
         res.redirect(`/user/${req.params.username}/currentuser/${req.params.username}`)
-    // or you can write
-    // posts.insertOne(req.body);
     } catch (err) {
         console.error(err);
         res.sendStatus(500);

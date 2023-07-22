@@ -23,11 +23,11 @@
                 <br>
                 <br>
                 <div class="votecontainer">
-                    <button id="likebtn" >
+                    <button id="likebtn" onclick="window.location.href='/upvotepost/{{post.postID}}/currentuser/{{currentuser}}';">
                         <i class="fa fa-thumbs-up"></i>
                     </button>
                     <input type="number" id="input1" value="{{post.upvote}}" name="">
-                    <button id="dislikebtn" >
+                    <button id="dislikebtn" onclick="window.location.href='/downvotepost/{{post.postID}}/currentuser/{{currentuser}}';">
                         <i class="fa fa-thumbs-down"></i>
                     </button>
                     <input type="number" id="input2" value="{{post.downvote}}" name="">
@@ -37,10 +37,9 @@
     </div>
     {{#if replies}}
     {{#each replies}}
-    {{> reply this}}
+    {{> replyLI this currentuser=../currentuser}}
     {{/each}}
     {{else}}
     <p> No replies to show...</p>
     {{/if}}
 </div>
-<script src="/static/js/main.js"></script>

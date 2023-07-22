@@ -11,7 +11,7 @@
         </div>
         {{#if posts}}
         {{#each posts}}
-        {{> post this}}
+        {{> postLI this additionalVariable=../additionalVariable}}
         {{/each}}
         {{else}}
         <p> No posts to show...</p>

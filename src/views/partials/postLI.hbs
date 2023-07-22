@@ -1,12 +1,12 @@
 <div class="table-row">
     <div class="status"><i class="fa fa-fire"></i></div>
     <div class="subjects">
-        <a href="/replies/{{this.postID}}">{{this.title}}</a>
+        <a href="/replies/{{this.postID}}/currentuser/{{additionalVariable}}">{{this.title}}</a>
         <br>
-        <span>Started by <b><a href="/user/{{this.username}}/currentuser/{{user}}">{{this.username}}</a></b> .</span>
+        <span>Started by <b><a href="/user/{{this.username}}/currentuser/{{additionalVariable}}">{{this.username}}</a></b> .</span>
     </div>
     <div class="replies">
-        1 replies <br> 4 views
+        {{this.replies}} replies <br> {{this.views}} views
     </div>
 
     <div class="last-reply">
