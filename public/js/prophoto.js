@@ -16,7 +16,7 @@ const users = [
     if (user) {
       const img = document.createElement("img");
       img.src = user.photo;
-      img.alt = `${user.name}'s Profile Photo`;
+      img.alt = "";
   
       profilePhotosContainers[i].appendChild(img);
     }

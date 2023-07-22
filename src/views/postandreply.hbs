@@ -14,7 +14,7 @@
 
         <div class="body">
             <div class="authors">
-                <div class="username"><a href="profile2.html">{{post.username}}</a></div>
+                <div class="username"><a href="/user/{{post.username}}">{{post.username}}</a></div>
                 <div class="profilePhotos"></div>
                 <div><u>{{post.date}}</u></div>
             </div>
@@ -26,15 +26,11 @@
                     <button id="likebtn">
                         <i class="fa fa-thumbs-up"></i>
                     </button>
-                    <input type="number" id="input1" value="{{this.upvote}}" name="">
+                    <input type="number" id="input1" value="{{post.upvote}}" name="">
                     <button id="dislikebtn">
                         <i class="fa fa-thumbs-down"></i>
                     </button>
-                    <input type="number" id="input2" value="{{this.downvote}}" name="">
-                    </div>
-                <div class="comment">
-                    <button class= "x-btn" onclick="removeComment()">X</button>
-                    <button class= "reply-btn" onclick="showComment()">Comment</button>
+                    <input type="number" id="input2" value="{{post.downvote}}" name="">
                 </div>
             </div>
         </div>

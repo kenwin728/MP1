@@ -1,20 +1,20 @@
 import { Router } from 'express';
 import { getDb } from '../db/conn.js';
 
-const repliesRouter = Router();
+const userRouter = Router();
 const db = getDb();
-const replies = db.collection("replies");
+const users = db.collection("users");
 const posts = db.collection("posts");
 
-repliesRouter.get("/replies/:postID", async (req, res) => {
+userRouter.get("/user/:username", async (req, res) => {
     try{
-        const postID = parseInt(req.params.postID);
-        const repliesArray = await replies.find({postID: postID}).toArray();
-        const post = await posts.findOne({postID: postID});
-        res.render("postandreply", {
-            title: "postandreply",
-            post: post,
-            replies: repliesArray
+        const username = req.params.username;
+        const user = await users.findOne({username: username});
+        const post = await posts.findOne({username: username}, {sort: {postID: -1}});
+        res.render("user", {
+            title: "user",
+            user: user,
+            post: post
         });
     } catch(err){
         console.error(err);
@@ -22,7 +22,7 @@ repliesRouter.get("/replies/:postID", async (req, res) => {
     
 });
 
-repliesRouter.post("/replies", async (req, res) => {
+userRouter.post("/replies", async (req, res) => {
     console.log("POST request received for /posts");
     console.log(req.body);
     try {
@@ -41,4 +41,4 @@ repliesRouter.post("/replies", async (req, res) => {
     }
 });
 
-export default repliesRouter;
+export default userRouter;
