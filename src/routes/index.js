@@ -2,6 +2,8 @@ import { Router } from 'express';
 import postsRouter from './postsRouter.js';
 import repliesRouter from './repliesRouter.js';
 import userRouter from './userRouter.js';
+import registerRouter from './registerRouter.js';
+import loginRouter from './loginRouter.js';
 
 const router = Router();
 
@@ -25,7 +27,9 @@ router.get("/back", (req, res) => {
 
 router.use(postsRouter);
 router.use(repliesRouter);
-router.use(userRouter)
+router.use(userRouter);
+router.use(registerRouter);
+router.use(loginRouter);
 
 router.use((req, res) => {
     res.render("error", {
