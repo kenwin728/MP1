@@ -26,7 +26,7 @@ repliesRouter.get("/replies/:postID", async (req, res) => {
         const post = await posts.findOne({postID: postID});
         const postUser = await users.findOne({username: post.username});
         res.render("postandreply", {
-            title: "postandreply",
+            title: post.title,
             post: post,
             user: postUser,
             mergedData: mergedData
@@ -55,7 +55,7 @@ repliesRouter.get("/replies/:postID/currentuser/:username", async (req, res) => 
         const post = await posts.findOne({postID: postID});
         const postUser = await users.findOne({username: post.username});
         res.render("postandreplyLI", {
-            title: "postandreply",
+            title: post.title,
             post: post,
             user: postUser,
             mergedData: mergedData,
