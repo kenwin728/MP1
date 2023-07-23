@@ -18,9 +18,14 @@ loginRouter.post("/login", async (req, res) => {
     try {
         const user = await users.findOne({username: req.body.username});
         console.log(user);
-        if (user.password === req.body.password){
-            console.log("Successful Login");
-            res.json(`/posts/currentuser/${req.body.username}`);
+        if (user){
+            if (user.password === req.body.password){
+                console.log("Successful Login");
+                res.json(`/posts/currentuser/${req.body.username}`);
+            }
+            else {
+                alert("Incorrect User or Password");
+            }
         }
         else {
             alert("Incorrect User or Password");
