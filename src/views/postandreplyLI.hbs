@@ -14,7 +14,7 @@
 
         <div class="body">
             <div class="authors">
-                <div class="username"><a href="/user/{{post.username}}">{{post.username}}</a></div>
+                <div class="username"><a href="/user/{{post.username}}/currentuser/{{currentuser}}">{{post.username}}</a></div>
                 <div class="profilePhotos"></div>
                 <div><u>{{post.date}}</u></div>
             </div>
@@ -42,4 +42,9 @@
     {{else}}
     <p> No replies to show...</p>
     {{/if}}
+    <div class="container">
+        <a id="Register" href="/posts/currentuser/{{currentuser}}"> 
+            <input type="button" value="Back to mainpage..."> 
+        </a>
+    </div>
 </div>
