@@ -21,6 +21,8 @@ repliesRouter.get("/replies/:postID", async (req, res) => {
             usersArray.push(user);
         }
         const mergedData = mergeArrays(repliesArray, usersArray);
+        //Increment views of post everytime we visit
+        const result = await posts.updateOne({postID: postID},{$inc: {views: 1}});
         const post = await posts.findOne({postID: postID});
         const postUser = await users.findOne({username: post.username});
         res.render("postandreply", {
@@ -48,6 +50,8 @@ repliesRouter.get("/replies/:postID/currentuser/:username", async (req, res) => 
             usersArray.push(user);
         }
         const mergedData = mergeArrays(repliesArray, usersArray);
+        //Increment views of post everytime we visit
+        const result = await posts.updateOne({postID: postID},{$inc: {views: 1}});
         const post = await posts.findOne({postID: postID});
         const postUser = await users.findOne({username: post.username});
         res.render("postandreplyLI", {
