@@ -70,22 +70,48 @@ postsRouter.post("/post/:postID/edit", async (req, res) => {
 });
 
 //for creating post (still not yet done)
-postsRouter.post("/posts", async (req, res) => {
-    console.log("POST request received for /posts");
+postsRouter.post("/post/create/currentuser/:username", async (req, res) => {
+    console.log("POST request received for /create");
     console.log(req.body);
+    // Get the current date
+    const currentDate = new Date();
+
+    // Get the individual components of the date
+    const year = currentDate.getFullYear();
+    const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+    const day = String(currentDate.getDate()).padStart(2, '0');
+
+    // Format the date as mm/dd/yyyy
+    const formattedDate = `${month}/${day}/${year}`;
+
+    // Convert the formatted date to a string
+    const dateString = String(formattedDate);
     try {
+        const latestpost = await posts.findOne({}, {sort: {postID: -1}});
+        let latestpostID;
+        //making sure our post has a unique post ID
+        if (latestpost){
+            latestpostID = latestpost.postID + 1;
+        }
+        else{
+            latestpostID = 1;
+        }
         const result = await posts.insertOne({
-            username: req.body.username, 
-            title: req.body.title
+            username: req.params.username, 
+            title: req.body.posttitle,
+            content: req.body.postcontent,
+            date: dateString,
+            postID: latestpostID,
+            downvote: 0,
+            upvote: 0,
+            views: 0,
+            replies: 0
         });
 
         console.log(result);
-        res.sendStatus(200);
-    // or you can write
-    // posts.insertOne(req.body);
+        res.redirect(`/posts/currentuser/${req.params.username}`);
     } catch (err) {
         console.error(err);
-        res.sendStatus(500);
     }
 });
 
