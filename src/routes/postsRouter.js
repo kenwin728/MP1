@@ -9,7 +9,7 @@ const replies = db.collection("replies");
 
 postsRouter.get("/posts", async (req, res) => {
     try{
-        const postsArray = await posts.find({}).toArray();
+        const postsArray = await posts.find({}, {sort: {postID: -1}}).toArray();
         res.render("posts", {
             title: "Posts",
             posts: postsArray,
@@ -21,7 +21,7 @@ postsRouter.get("/posts", async (req, res) => {
 
 postsRouter.get("/posts/currentuser/:username", async (req, res) => {
     try{
-        const postsArray = await posts.find({}).toArray();
+        const postsArray = await posts.find({}, {sort: {postID: -1}}).toArray();
         const currentuser = await users.findOne({username: req.params.username});
         res.render("postsLI", {
             title: "Posts",
@@ -43,7 +43,8 @@ postsRouter.get("/post/:postID/delete", async (req, res) => {
         console.log(post);
         const result = await posts.deleteOne({postID: postID});
         const result2 = await replies.deleteMany({postID: postID});
-        res.redirect(`/posts/currentuser/${username}`)
+        const result3 = await users.updateOne({username: username}, {$inc: {numberofposts: -1}});
+        res.redirect(`/posts/currentuser/${username}`);
     } catch (err){
         console.error(err);
     }
@@ -69,7 +70,7 @@ postsRouter.post("/post/:postID/edit", async (req, res) => {
     }
 });
 
-//for creating post (still not yet done)
+//for creating post
 postsRouter.post("/post/create/currentuser/:username", async (req, res) => {
     console.log("POST request received for /create");
     console.log(req.body);
@@ -107,8 +108,9 @@ postsRouter.post("/post/create/currentuser/:username", async (req, res) => {
             views: 0,
             replies: 0
         });
-
+        const result2 = await users.updateOne({username: req.params.username}, {$inc: {numberofposts: 1}});
         console.log(result);
+        console.log(result2);
         res.redirect(`/posts/currentuser/${req.params.username}`);
     } catch (err) {
         console.error(err);

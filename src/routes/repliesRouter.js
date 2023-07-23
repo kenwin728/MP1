@@ -66,7 +66,7 @@ repliesRouter.get("/replies/:postID/currentuser/:username", async (req, res) => 
     }
     
 });
-
+//Upvote post
 repliesRouter.get("/upvotepost/:postID/currentuser/:username", async (req, res) => {
     try{
         const postID = parseInt(req.params.postID);
@@ -77,7 +77,7 @@ repliesRouter.get("/upvotepost/:postID/currentuser/:username", async (req, res) 
     }
     
 });
-
+//Downvote post
 repliesRouter.get("/downvotepost/:postID/currentuser/:username", async (req, res) => {
     try{
         const postID = parseInt(req.params.postID);
@@ -88,7 +88,7 @@ repliesRouter.get("/downvotepost/:postID/currentuser/:username", async (req, res
     }
     
 });
-
+//Upvote reply
 repliesRouter.get("/upvotereply/:replyID/currentuser/:username", async (req, res) => {
     try{
         const replyID = parseInt(req.params.replyID);
@@ -101,7 +101,7 @@ repliesRouter.get("/upvotereply/:replyID/currentuser/:username", async (req, res
     }
     
 });
-
+//Downvote reply
 repliesRouter.get("/downvotereply/:replyID/currentuser/:username", async (req, res) => {
     try{
         const replyID = parseInt(req.params.replyID);
@@ -125,13 +125,15 @@ repliesRouter.get("/reply/:replyID/delete", async (req, res) => {
         const username = reply.username;
         console.log(reply);
         const result = await replies.deleteOne({replyID: replyID});
+        //Decrease the number of replies for the post
+        const result2 = await posts.updateOne({postID: postID}, {$inc: {replies: -1}});
         res.redirect(`/replies/${postID}/currentuser/${username}`)
     } catch(err){
         console.error(err);
     }
     
 });
-
+//Edit Reply
 repliesRouter.post("/reply/:replyID/edit", async (req, res) => {
     console.log("POST request received for /edit");
     const replyID = parseInt(req.params.replyID);
@@ -144,7 +146,54 @@ repliesRouter.post("/reply/:replyID/edit", async (req, res) => {
             content: req.body.reply
         }});
         const reply = await replies.findOne({replyID: replyID});
-        res.redirect(`/replies/${reply.postID}/currentuser/${reply.username}`)
+        res.redirect(`/replies/${reply.postID}/currentuser/${reply.username}`);
+    } catch (err) {
+        console.error(err);
+        res.sendStatus(500);
+    }
+});
+//Create Reply
+repliesRouter.post("/reply/:postID/create/currentuser/:username", async (req, res) => {
+    console.log("POST request received for /create");
+    const postID = parseInt(req.params.postID);
+    console.log(req.body);
+    // Get the current date
+    const currentDate = new Date();
+
+    // Get the individual components of the date
+    const year = currentDate.getFullYear();
+    const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+    const day = String(currentDate.getDate()).padStart(2, '0');
+
+    // Format the date as mm/dd/yyyy
+    const formattedDate = `${month}/${day}/${year}`;
+
+    // Convert the formatted date to a string
+    const dateString = String(formattedDate);
+    try {
+        const latestreply = await replies.findOne({}, {sort: {replyID: -1}});
+        let latestreplyID;
+        //making sure our reply has a unique reply ID
+        if (latestreply){
+            latestreplyID = latestreply.replyID + 1;
+        }
+        else{
+            latestreplyID = 1;
+        }
+        const result = await replies.insertOne({
+            username: req.params.username, 
+            content: req.body.replycontent,
+            date: dateString,
+            postID: postID,
+            downvote: 0,
+            upvote: 0,
+            replyID: latestreplyID
+        });
+        //Increase the number of replies for the post
+        const result2 = await posts.updateOne({postID: postID},{$inc: {replies: 1}});
+        console.log(result);
+        console.log(result2);
+        res.redirect(`/replies/${postID}/currentuser/${req.params.username}`);
     } catch (err) {
         console.error(err);
         res.sendStatus(500);

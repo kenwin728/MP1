@@ -53,9 +53,22 @@
     {{else}}
     <p> No replies to show...</p>
     {{/if}}
+    <div class="makepostcontainer">
+        <div class="post">
+            <button class="post-btn" onclick="showPost()">Make a Reply</button>
+            <button class="cancel-btn" onclick="removePost()">Cancel...</button>
+        </div>
+        <div class="post-area hide" id="post-area">
+            <form action="/reply/{{post.postID}}/create/currentuser/{{currentuser}}" method="post" enctype="application/x-www-form-urlencoded">
+                <textarea name="replycontent" id="" placeholder="Insert text here... "></textarea>
+                <input type="submit" value="Create Reply" class="makepost-btn">
+            </form>
+        </div>
+    </div>
     <div class="container">
         <a id="Register" href="/posts/currentuser/{{currentuser}}"> 
             <input type="button" class="mainpage-btn" value="Back to mainpage..."> 
         </a>
     </div>
 </div>
+<script src="/static/js/replies.js"></script>
