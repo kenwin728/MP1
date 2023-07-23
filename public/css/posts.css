@@ -418,7 +418,3 @@ html::-webkit-scrollbar-thumb{
 .cancel-btn:active{
     transform: scale(0.96);
 }
-
-.container a{
-    text-decoration: none;
-}

@@ -1,24 +1,24 @@
 <div class="comments-container">
-            <div class="body">
-                <div class="authors">
-                    <div class="username"><a href="/user/{{this.username}}/currentuser/{{currentuser}}">{{this.username}}</a></div>
-                    <div class="profilePhotos"><img src="/" alt=""></div>
-                    <div><u>{{this.date}}</u></div>
-                </div>
-                <div class="content">
-                    {{this.content}}
-                    <br>
-                    <br>
-                    <div class="votecontainer">
-                        <button id="likebtn2" onclick="window.location.href='/upvotereply/{{this.replyID}}/currentuser/{{currentuser}}';">
-                            <i class="fa fa-thumbs-up"></i>
-                        </button>
-                        <input type="number" id="input1_com" value="{{this.upvote}}" name="">
-                        <button id="dislikebtn2" onclick="window.location.href='/downvotereply/{{this.replyID}}/currentuser/{{currentuser}}';">
-                            <i class="fa fa-thumbs-down"></i>
-                        </button>
-                        <input type="number" id="input2_com" value="{{this.downvote}}" name="">
-                    </div>
-                </div>
+    <div class="body">
+        <div class="authors">
+            <div class="username"><a href="/user/{{reply.username}}/currentuser/{{currentuser}}">{{reply.username}}</a></div>
+            <div class="profilePhotos"><img src="/{{user.photo}}" alt=""></div>
+            <div><u>{{reply.date}}</u></div>
+        </div>
+        <div class="content">
+            {{reply.content}}
+            <br>
+            <br>
+            <div class="votecontainer">
+                <button id="likebtn2" onclick="window.location.href='/upvotereply/{{reply.replyID}}/currentuser/{{currentuser}}';">
+                    <i class="fa fa-thumbs-up"></i>
+                </button>
+                <input type="number" id="input1_com" value="{{reply.upvote}}" name="">
+                <button id="dislikebtn2" onclick="window.location.href='/downvotereply/{{reply.replyID}}/currentuser/{{currentuser}}';">
+                    <i class="fa fa-thumbs-down"></i>
+                </button>
+                <input type="number" id="input2_com" value="{{reply.downvote}}" name="">
             </div>
         </div>
+    </div>
+</div>

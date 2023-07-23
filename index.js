@@ -10,7 +10,7 @@ import router from "./src/routes/index.js";
 // Database modules
 import { connectToMongo } from "./src/db/conn.js";
 import bodyParser from "body-parser";
-
+import { mergeArrays } from './src/helpers/customHelpers.js';
 
 async function main () {
     const __dirname = dirname(fileURLToPath(import.meta.url)); // directory URL
@@ -19,7 +19,8 @@ async function main () {
     app.use("/static", express.static(__dirname + "/public"));
     // Set handlebars as the express app's default view engine
     app.engine("hbs", exphbs.engine({
-        extname: 'hbs'
+        extname: 'hbs',
+        helpers: { mergeArrays }
     }));
     app.set("view engine", "hbs");
     // directory for views folder
