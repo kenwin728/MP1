@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { getDb } from '../db/conn.js';
+import alert from 'alert';
 
 const registerRouter = Router();
 const db = getDb();
@@ -15,16 +16,20 @@ registerRouter.post("/register", async (req, res) => {
     console.log("POST request received for /register");
     console.log(req.body);
     try {
-        const result = await users.insertOne({
-            username: req.body.username, 
-            password: req.body.password,
-            description: "",
-            photo: "",
-            numberofposts: 0
-        });
-        res.redirect("/login");
-    // or you can write
-    // users.insertOne(req.body);
+        const user = await users.findOne({username: req.body.username});
+        if (user){
+            alert("Username already used!");
+        }
+        else{
+            const result = await users.insertOne({
+                username: req.body.username, 
+                password: req.body.password,
+                description: "",
+                photo: "",
+                numberofposts: 0
+            });
+            res.redirect("/login");
+        }
     } catch (err) {
         console.error(err);
         res.sendStatus(500);
