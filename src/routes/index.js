@@ -8,17 +8,15 @@ import loginRouter from './loginRouter.js';
 const router = Router();
 
 router.get("/", (req, res) => {
-    res.render("posts", {
-        title: "Homepage"
-    });
+    res.redirect("/posts");
 });
 
 router.get("/home", (req, res) => {
-    res.redirect("/");
+    res.redirect("/posts");
 });
 
 router.get("/homepage", (req, res) => {
-    res.redirect("/");
+    res.redirect("/posts");
 });
 
 router.get("/back", (req, res) => {
