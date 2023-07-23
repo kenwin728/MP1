@@ -25,6 +25,27 @@ postsRouter.get("/posts/currentuser/:username", async (req, res) => {
     });
 });
 
+postsRouter.post("/post/:postID/edit", async (req, res) => {
+    console.log("POST request received for /edit");
+    const postID = parseInt(req.params.postID);
+    console.log(req.body);
+    try {
+        const result = await posts.updateOne({
+            postID: postID
+        },
+        {$set: {
+            title: req.body.editedtitle,
+            content: req.body.editedcontent
+        }});
+        const post = await posts.findOne({postID: postID});
+        res.redirect(`/replies/${post.postID}/currentuser/${post.username}`)
+    } catch (err) {
+        console.error(err);
+        res.sendStatus(500);
+    }
+});
+
+//for creating post (still not yet done)
 postsRouter.post("/posts", async (req, res) => {
     console.log("POST request received for /posts");
     console.log(req.body);

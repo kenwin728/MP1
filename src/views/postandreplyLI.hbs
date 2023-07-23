@@ -34,6 +34,15 @@
             </div>
         </div>
     </div>
+    {{#if (eq post.username currentuser)}}
+        <div>
+            <form action="/post/{{post.postID}}/edit" method="post" enctype="application/x-www-form-urlencoded">
+                <input type="text" name="editedtitle" placeholder="edit post title here .. ">
+                <textarea name="editedcontent" placeholder="edit post content here ... "></textarea>
+                <input type="submit" value="Edit Post">
+            </form>
+        </div>
+    {{/if}}
     {{#if mergedData}}
     {{#each mergedData}}
     {{> replyLI reply=Reply user=User currentuser=../currentuser}}
