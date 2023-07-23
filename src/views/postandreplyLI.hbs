@@ -41,6 +41,9 @@
                 <textarea name="editedcontent" placeholder="edit post content here ... "></textarea>
                 <input type="submit" value="Edit Post">
             </form>
+            <a id="deleteButton" href="/post/{{post.postID}}/delete"> 
+                <input type="button" class="mainpage-btn" value="Delete Post"> 
+            </a>
         </div>
     {{/if}}
     {{#if mergedData}}

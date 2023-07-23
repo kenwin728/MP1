@@ -5,24 +5,48 @@ const postsRouter = Router();
 const db = getDb();
 const posts = db.collection("posts");
 const users = db.collection("users");
+const replies = db.collection("replies");
 
 postsRouter.get("/posts", async (req, res) => {
-    const postsArray = await posts.find({}).toArray();
-    res.render("posts", {
-        title: "Posts",
-        posts: postsArray,
-    });
+    try{
+        const postsArray = await posts.find({}).toArray();
+        res.render("posts", {
+            title: "Posts",
+            posts: postsArray,
+        });
+    } catch (err){
+        console.error(err);
+    }
 });
 
 postsRouter.get("/posts/currentuser/:username", async (req, res) => {
-    const postsArray = await posts.find({}).toArray();
-    const currentuser = await users.findOne({username: req.params.username});
-    res.render("postsLI", {
-        title: "Posts",
-        user: currentuser,
-        posts: postsArray,
-        additionalVariable: req.params.username
-    });
+    try{
+        const postsArray = await posts.find({}).toArray();
+        const currentuser = await users.findOne({username: req.params.username});
+        res.render("postsLI", {
+            title: "Posts",
+            user: currentuser,
+            posts: postsArray,
+            additionalVariable: req.params.username
+        });
+    } catch (err){
+        console.error(err);
+    }
+});
+//handles deletion of post
+postsRouter.get("/post/:postID/delete", async (req, res) => {
+    try{
+        const postID = parseInt(req.params.postID);
+        const post = await posts.findOne({postID: postID});
+        //store the username of the post before deletion for referencing in res.redirect
+        const username = post.username;
+        console.log(post);
+        const result = await posts.deleteOne({postID: postID});
+        const result2 = await replies.deleteMany({postID: postID});
+        res.redirect(`/posts/currentuser/${username}`)
+    } catch (err){
+        console.error(err);
+    }
 });
 
 postsRouter.post("/post/:postID/edit", async (req, res) => {
