@@ -19,6 +19,15 @@
                 </button>
                 <input type="number" id="input2_com" value="{{reply.downvote}}" name="">
             </div>
+            
         </div>
     </div>
 </div>
+{{#if (eq reply.username currentuser)}}
+    <div>
+        <form action="/reply/{{reply.replyID}}/edit" method="post" enctype="application/x-www-form-urlencoded">
+            <textarea name="reply" placeholder="reply here ... "></textarea>
+            <input type="submit" value="Edit Reply">
+        </form>
+    </div>
+{{/if}}

@@ -38,7 +38,8 @@ repliesRouter.get("/replies/:postID", async (req, res) => {
 repliesRouter.get("/replies/:postID/currentuser/:username", async (req, res) => {
     try{
         const postID = parseInt(req.params.postID);
-        const repliesArray = await replies.find({postID: postID}).toArray();
+        //added {sort: {replyID: -1}} to sort the replies with decreasing replyID so we can get the latest reply first
+        const repliesArray = await replies.find({postID: postID}, {sort: {replyID: -1}}).toArray();
         const usersArray = [];
         for (const reply of repliesArray) {
             // Find the corresponding user for each reply
@@ -110,19 +111,19 @@ repliesRouter.get("/downvotereply/:replyID/currentuser/:username", async (req, r
     
 });
 
-repliesRouter.post("/replies", async (req, res) => {
-    console.log("POST request received for /posts");
-    console.log(req.body);
+repliesRouter.post("/reply/:replyID/edit", async (req, res) => {
+    console.log("POST request received for /edit");
+    const replyID = parseInt(req.params.replyID);
+    console.log(req.body.reply);
     try {
-        const result = await posts.insertOne({
-            username: req.body.username, 
-            title: req.body.title
-        });
-
-        console.log(result);
-        res.sendStatus(200);
-    // or you can write
-    // posts.insertOne(req.body);
+        const result = await replies.updateOne({
+            replyID: replyID
+        },
+        {$set: {
+            content: req.body.reply
+        }});
+        const reply = await replies.findOne({replyID: replyID});
+        res.redirect(`/replies/${reply.postID}/currentuser/${reply.username}`)
     } catch (err) {
         console.error(err);
         res.sendStatus(500);
