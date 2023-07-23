@@ -111,6 +111,23 @@ repliesRouter.get("/downvotereply/:replyID/currentuser/:username", async (req, r
     
 });
 
+//Handles deletion of reply
+repliesRouter.get("/reply/:replyID/delete", async (req, res) => {
+    try{
+        const replyID = parseInt(req.params.replyID);
+        const reply = await replies.findOne({replyID: replyID});
+        //store the post ID and the username of the reply before deletion so we can reference that in our res.redirect
+        const postID = reply.postID;
+        const username = reply.username;
+        console.log(reply);
+        const result = await replies.deleteOne({replyID: replyID});
+        res.redirect(`/replies/${postID}/currentuser/${username}`)
+    } catch(err){
+        console.error(err);
+    }
+    
+});
+
 repliesRouter.post("/reply/:replyID/edit", async (req, res) => {
     console.log("POST request received for /edit");
     const replyID = parseInt(req.params.replyID);
