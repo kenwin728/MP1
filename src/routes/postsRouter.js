@@ -11,7 +11,7 @@ postsRouter.get("/posts", async (req, res) => {
     try{
         const postsArray = await posts.find({}, {sort: {postID: -1}}).toArray();
         res.render("posts", {
-            title: "Posts",
+            title: "Homepage",
             posts: postsArray,
         });
     } catch (err){
@@ -24,7 +24,7 @@ postsRouter.get("/posts/currentuser/:username", async (req, res) => {
         const postsArray = await posts.find({}, {sort: {postID: -1}}).toArray();
         const currentuser = await users.findOne({username: req.params.username});
         res.render("postsLI", {
-            title: "Posts",
+            title: "Homepage",
             user: currentuser,
             posts: postsArray,
             additionalVariable: req.params.username
