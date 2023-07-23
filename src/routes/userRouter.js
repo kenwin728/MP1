@@ -26,7 +26,7 @@ userRouter.get("/user/:username", async (req, res) => {
         const user = await users.findOne({username: username});
         const post = await posts.findOne({username: username}, {sort: {postID: -1}});
         res.render("user", {
-            title: "user",
+            title: user.username,
             user: user,
             post: post,
             link: "/posts",
@@ -46,7 +46,7 @@ userRouter.get("/user/:username/currentuser/:currentuser", async (req, res) => {
             const user = await users.findOne({username: username});
             const post = await posts.findOne({username: username}, {sort: {postID: -1}});
             res.render("userwithedit", {
-                title: "user",
+                title: user.username,
                 user: user,
                 post: post
             });
