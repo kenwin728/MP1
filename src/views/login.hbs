@@ -1,21 +1,21 @@
 <link rel="stylesheet" href="/static/css/logReg.css">
 <div class = "center">
     <h1>Login</h1>
-    <form id="loginUserForm" name="loginUserForm">
+    <form action="/login" method="post">
         <div class="fillout">
             <span class="icon"><ion-icon name="people"></ion-icon></span>
-            <input type="text" required name="username">
+            <input type="text" name="username" required>
             <label>Username</label>
         </div>
         <div class="fillout">
             <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
-            <input type="password" required name="password">
+            <input type="password" name="password" required>
             <label>Password</label>
         </div>
         <label>
             <input type="checkbox" checked="checked" name="remember"> Remember me
         </label>
-        <input type="button" id="Login" value="Login"> 
+        <input type="submit" id="Login" value="Login"> 
 
         <div class="login_link">
             <span>Don't have an account? </span><a href="/register">Register</a>
@@ -23,5 +23,4 @@
     </form>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <script src="/static/js/login.js"></script>
 </div>

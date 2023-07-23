@@ -21,7 +21,7 @@ loginRouter.post("/login", async (req, res) => {
         if (user){
             if (user.password === req.body.password){
                 console.log("Successful Login");
-                res.json(`/posts/currentuser/${req.body.username}`);
+                res.redirect(`/posts/currentuser/${req.body.username}`);
             }
             else {
                 alert("Incorrect User or Password");

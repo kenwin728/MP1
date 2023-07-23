@@ -23,7 +23,6 @@ registerRouter.post("/register", async (req, res) => {
             numberofposts: 0
         });
         res.redirect("/login");
-        console.log(result);
     // or you can write
     // users.insertOne(req.body);
     } catch (err) {
