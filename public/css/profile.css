@@ -81,7 +81,7 @@ body{
 .card .content .details h2{
     font-size: 1.25em;
     font-weight: 600;
-    color: #45f3ff;
+    color: #FF0042;
     line-height: 1.2em;
 
 }
@@ -95,26 +95,25 @@ body{
 
 .card .content .details .data h3{
     font-size: 1em;
-    color: #45f3ff;
+    color: #FFFF;
     line-height: 1.2em;
     font-weight: 600;
 }
 
 .card .content .details .data h3 span{
     font-size: 0.85em;
-    font-weight: 400;
     opacity: 0.5;
     color: #fff;
 }
 .card .content .details .posts h3{
-    color: #45f3ff;
+    color: #FFFF;
 }
 .card .content .details .posts a{
     text-decoration: none;
 }
 .card .content .details .posts a .post-title{
-    color: red;
-    font-weight: bold;
+    color: #FF0042;
+    font-weight: 500;
 }
 
 .card .content .details .posts a .post-info{
@@ -124,7 +123,7 @@ body{
 
 .card .content .details .posts a .post-info h3{
     font-size: 1em;
-    color: #45f3ff;
+    color: #FFFF;
     line-height: 1.2em;
     font-weight: 600;
 }
@@ -135,3 +134,61 @@ body{
     opacity: 0.5;
     color: #fff;
 }
+
+.container{
+    padding: 8px;
+    margin-top: 8px;
+    border-radius: 20px;
+    background: #FFFF;
+    transition: all 0.2s ease;
+}
+.container a{
+    color: black;
+}
+
+.edit{
+    position: relative;
+    width: 400px;
+    height: 300px;
+    top: 50px;
+    background: #292929;
+    border-radius: 20px;
+    box-shadow: 0 35px 80px rgba(0,0,0,0.15);
+    transition: 0.5s;
+}
+
+.edit .edit_content{
+    padding: 30px;
+    color: white;
+    margin: 20px;
+}
+
+input[type=file]::file-selector-button {
+    margin-right: 50px;
+    margin-bottom: 5px;
+    border: none;
+    background: #FFFF;
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: black;
+    cursor: pointer;
+    transition: background .2s ease-in-out;
+  }
+  
+  input[type=file]::file-selector-button:hover {
+    background: #FF0042;
+  }
+
+  textarea{
+    width: 300px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    background: #FFFF;
+    padding: 10px;
+    border-radius: 10px;
+    color: black;
+  }
+  
+  input[type=file]::file-selector-button:hover {
+    background: #FF0042;
+  }
