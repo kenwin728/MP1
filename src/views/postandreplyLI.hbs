@@ -36,7 +36,7 @@
     </div>
     {{#if (eq post.username currentuser)}}
         <div>
-            <form action="/post/{{post.postID}}/edit" method="post" enctype="application/x-www-form-urlencoded">
+            <form action="/post/{{post.postID}}/edit" method="post" enctype="application/x-www-form-urlencoded" id="post_form">
                 <input type="text" name="editedtitle" placeholder="edit post title here .. " class="edit_title">
                 <textarea name="editedcontent" placeholder="edit post content here ... " class="edit_content"></textarea>
                 <input type="submit" value="Edit Post" class="edit_button">
@@ -60,7 +60,7 @@
         </div>
         <div class="post-area hide" id="post-area">
             <form action="/reply/{{post.postID}}/create/currentuser/{{currentuser}}" method="post" enctype="application/x-www-form-urlencoded">
-                <textarea name="replycontent" id="" placeholder="Insert text here... "></textarea>
+                <textarea name="replycontent" id="" placeholder="Insert text here... " id="reply_content"></textarea>
                 <input type="submit" value="Create Reply" class="makepost-btn">
             </form>
         </div>

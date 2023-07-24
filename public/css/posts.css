@@ -179,16 +179,17 @@ h1{
 .post button{
     text-decoration: none;
     margin-right: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     color: white;
+    width: 200px;
 }
 /* post section */
 .post-area{
-    margin-bottom:50px;
+    margin-bottom:20px;
 }
 
 .post-area textarea{
-    width: 100%;
+    width: 95%;
     min-height: 100px;
     padding: 20px;
     margin-block: 20px;
@@ -360,12 +361,16 @@ html::-webkit-scrollbar-thumb{
 }
 
 
-.makepost-btn{
+div form .makepost-btn{
     color: white;
     padding: 8px 22px;
     border-radius: 6px;
     background: #96235d;
     transition: all 0.2s ease;
+    width: 20%;
+    border-radius: 5px;
+    font-size: 13px;
+
 }
 
 .makepost-btn:active{
@@ -435,6 +440,8 @@ div .edit_button{
     width: 20%;
     border-radius: 5px;
     font-size: 13px;
+    color: #fff;
+    background: #000000;
     
 }
 
@@ -442,6 +449,16 @@ div .edit_button_rep{
     width: 23%;
     border-radius: 5px;
     font-size: 13px;
+    color: #fff;
+    background: #1079a9;
+}
+
+.edit_button:active{
+    transform: scale(0.96);
+}
+
+.edit_button_rep:active{
+    transform: scale(0.96);
 }
 
 .edit_content{
@@ -455,7 +472,7 @@ div .edit_button_rep{
     margin-left: 10px;
 }
 
-div form #edit_reply{
+div #edit_reply{
     width: 200px;
     padding: 10px;
     border-radius: 5px;
@@ -475,11 +492,10 @@ div #form_rep{
     margin-left: 70%;
 }
 
-div form{
+div #post_form{
     display: flex;
-    position: relative;
     padding: 10px;
-    margin-left: 20px;
-    margin-right: 20px;
+    border-radius: 5px;
+    margin: 10px;
     margin-left: 70%;
 }
