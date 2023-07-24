@@ -13,6 +13,7 @@
             <div class="posts">
                 <h3>Latest Post</h3>
                 <hr>
+                {{#if post}}
                 <a href="/replies/{{post.postID}}{{additionalLink}}">
                     <div class="post-title">{{post.title}}</div>
                     <div class="post-info">
@@ -26,6 +27,14 @@
                         </a>
                     </div>
                 </a>
+                {{else}}
+                    <div class="post-title">No post to show...</div>
+                    <div class="container">
+                        <a id="Register" href="{{link}}"> 
+                            <input type="button" value="Back to mainpage..."> 
+                        </a>
+                    </div>
+                {{/if}}
             </div>
         </div>
     </div>
