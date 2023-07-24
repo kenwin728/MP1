@@ -221,6 +221,10 @@ h1{
     display: none;
 }
 
+.hide2{
+    display: block;
+}
+
 /* Upvote */
   
 button {
