@@ -3,7 +3,7 @@
 /* ########################################### */
 
 html{
-    font-size: 14px;
+    font-size: 15px;
     font-family: 'Titillium Web', sans-serif;
     background-color:rgb(0,0,0);
     color: #FEFEFE;
@@ -114,6 +114,8 @@ h1{
 
 .body{
     display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #131415;
     padding: 10px;
     margin-top: 5px;
@@ -226,7 +228,7 @@ button {
 }
 .votecontainer #likebtn #likebtn2 #dislikebtn #dislikebtn2{
     margin-bottom: 50px;
-    margin-left: auto;
+    margin-right: auto;
 }
   
 #likebtn{
@@ -417,4 +419,67 @@ html::-webkit-scrollbar-thumb{
 
 .cancel-btn:active{
     transform: scale(0.96);
+}
+
+div .edit_title{
+    width: 200px;
+    padding: 10px;
+    border-radius: 5px;
+    outline: none;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
+div .edit_button{
+    width: 20%;
+    border-radius: 5px;
+    font-size: 13px;
+    
+}
+
+div .edit_button_rep{
+    width: 23%;
+    border-radius: 5px;
+    font-size: 13px;
+}
+
+.edit_content{
+    margin-right: 10px;
+    width: 30%;
+    outline: none;
+    border-radius: 5px;
+    padding: 10px 5px;
+    margin-left: 5px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+div form #edit_reply{
+    width: 200px;
+    padding: 10px;
+    border-radius: 5px;
+    outline: none;
+    margin-bottom: 10px;
+    margin-left: 5px;
+    font-weight: bold;
+    font-family: sans-serif;
+    margin-right: 10px;
+}
+
+div #form_rep{
+    display: flex;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px;
+    margin-left: 70%;
+}
+
+div form{
+    display: flex;
+    position: relative;
+    padding: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-left: 70%;
 }
