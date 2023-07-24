@@ -33,7 +33,6 @@
             </div>
         </div>
     </div>
-
     {{#if (eq post.username currentuser)}}
         <div>
             <form action="/post/{{post.postID}}/edit" method="post" enctype="application/x-www-form-urlencoded" id="post_form">
@@ -45,10 +44,10 @@
                 <input type="button" class="mainpage-btn" value="Delete Post"> 
             </a>
         </div>
-        <div class="head2">
-        Comments
-        </div>
     {{/if}}
+    <div class="head2">
+        Comments
+    </div>
     {{#if mergedData}}
     {{#each mergedData}}
     {{> replyLI reply=Reply user=User currentuser=../currentuser}}
