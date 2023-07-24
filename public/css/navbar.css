@@ -88,7 +88,6 @@ header img{
 }
 
 .search-container {
-    margin-left: 300px;
     width: 40%;
     justify-content: center;
     align-items: center;
@@ -99,7 +98,7 @@ header img{
     padding: 10px;
     font-size: 16px;
     border-radius: 4px;
-    width: 60%;
+    width: 350px;
     border: none;
     color: black;
   }
