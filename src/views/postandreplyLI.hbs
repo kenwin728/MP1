@@ -13,7 +13,7 @@
 
         <div class="body">
             <div class="authors">
-                <div class="username"><a href="/user/{{post.username}}/currentuser/{{currentuser}}">{{post.username}}</a></div>
+                <div class="username" id="author"><a href="/user/{{post.username}}/currentuser/{{currentuser}}">{{post.username}}</a></div>
                 <div class="profilePhotos"><img src="/{{user.photo}}" alt=""></div>
                 <div><u>{{post.date}}</u></div>
             </div>
@@ -55,8 +55,8 @@
     {{/if}}
     <div class="makepostcontainer">
         <div class="post">
-            <button class="post-btn" onclick="showPost()">Make a Reply</button>
-            <button class="cancel-btn" onclick="removePost()">Cancel...</button>
+            <button class="post-btn hide2" id="post-btn" onclick="showPost()">Make a Reply</button>
+            <button class="cancel-btn hide" id="cancel-btn" onclick="removePost()">Cancel...</button>
         </div>
         <div class="post-area hide" id="post-area">
             <form action="/reply/{{post.postID}}/create/currentuser/{{currentuser}}" method="post" enctype="application/x-www-form-urlencoded">
