@@ -10,10 +10,9 @@
             <div class="authors">Author</div>
             <div class="content">Topic: {{post.title}} (Read {{post.views}} Times)</div>
         </div>
-
         <div class="body">
             <div class="authors">
-                <div class="username" id="author"><a href="/user/{{post.username}}/currentuser/{{currentuser}}">{{post.username}}</a></div>
+                <div class="username" id="author"><a href="/user/{{post.username}}/currentuser/{{currentuser}}">{{post.username}}</a> <span class="og_poster">Original Post</span></div>
                 <div class="profilePhotos"><img src="/{{user.photo}}" alt=""></div>
                 <div><u>{{post.date}}</u></div>
             </div>
@@ -34,6 +33,7 @@
             </div>
         </div>
     </div>
+
     {{#if (eq post.username currentuser)}}
         <div>
             <form action="/post/{{post.postID}}/edit" method="post" enctype="application/x-www-form-urlencoded" id="post_form">
@@ -44,6 +44,9 @@
             <a id="deleteButton" href="/post/{{post.postID}}/delete"> 
                 <input type="button" class="mainpage-btn" value="Delete Post"> 
             </a>
+        </div>
+        <div class="head2">
+        Comments
         </div>
     {{/if}}
     {{#if mergedData}}
