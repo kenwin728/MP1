@@ -12,7 +12,7 @@ postsRouter.get("/posts", async (req, res) => {
         const postsArray = await posts.find({}, {sort: {postID: -1}}).toArray();
         res.render("posts", {
             title: "Homepage",
-            posts: postsArray,
+            posts: postsArray
         });
     } catch (err){
         console.error(err);
@@ -45,6 +45,37 @@ postsRouter.get("/post/:postID/delete", async (req, res) => {
         const result2 = await replies.deleteMany({postID: postID});
         const result3 = await users.updateOne({username: username}, {$inc: {numberofposts: -1}});
         res.redirect(`/posts/currentuser/${username}`);
+    } catch (err){
+        console.error(err);
+    }
+});
+
+postsRouter.get("/posts/search", async (req, res) => {
+    try{
+        const query = req.query.q;
+        const regex = new RegExp(`.*${query}.*`, 'i');
+        const searchResults = await posts.find({ title: regex }, {sort: {postID: -1}}).toArray();
+        res.render("posts", {
+            title: "Homepage",
+            posts: searchResults
+        });
+    } catch (err){
+        console.error(err);
+    }
+});
+
+postsRouter.get("/posts/currentuser/:username/search", async (req, res) => {
+    try{
+        const query = req.query.q;
+        const regex = new RegExp(`.*${query}.*`, 'i');
+        const searchResults = await posts.find({ title: regex }, {sort: {postID: -1}}).toArray();
+        const currentuser = await users.findOne({username: req.params.username});
+        res.render("postsLI", {
+            title: "Homepage",
+            user: currentuser,
+            posts: searchResults,
+            additionalVariable: req.params.username
+        });
     } catch (err){
         console.error(err);
     }

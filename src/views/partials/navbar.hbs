@@ -2,12 +2,14 @@
 <header>
     <h2 class="logo">The Lobby</h2>
     <img src="/static/img/acrossthespiderverse.jpg" alt="">
-        <div class="search-container">
-        <input type="text" placeholder="Search...">
-        <button type="submit">Search</button>
+    <div class="search-container">
+        <form action="/posts/search" method="get">
+            <input type="text" name="q" placeholder="Search...">
+            <button type="submit">Search</button>
+        </form>
     </div>
     <nav class="navbar">
-        <a href="">Home</a>
+        <a href="/posts">Home</a>
         <a id="loginRegister" href="/login"> Login</a>
     </nav>
     </header> 

@@ -3,11 +3,13 @@
     <h2 class="logo">The Lobby</h2>
         <img src="/static/img/acrossthespiderverse.jpg" alt="">
     <div class="search-container">
-        <input type="text" placeholder="Search...">
-        <button type="submit">Search</button>
+        <form action="/posts/currentuser/{{user.username}}/search" method="get">
+            <input type="text" name="q" placeholder="Search...">
+            <button type="submit">Search</button>
+        </form>
     </div>
     <nav class="navbar">
-        <a href="#">Home</a>
+        <a href="posts/currentuser/{{user.username}}">Home</a>
         <a id="profile" href="/user/{{user.username}}/currentuser/{{user.username}}"> <img src="/{{user.photo}}" alt=""></a>
         <a id="logout" href="/posts"> Logout</a>
     </nav>
