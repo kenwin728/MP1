@@ -37,9 +37,9 @@
     {{#if (eq post.username currentuser)}}
         <div>
             <form action="/post/{{post.postID}}/edit" method="post" enctype="application/x-www-form-urlencoded">
-                <input type="text" name="editedtitle" placeholder="edit post title here .. ">
-                <textarea name="editedcontent" placeholder="edit post content here ... "></textarea>
-                <input type="submit" value="Edit Post">
+                <input type="text" name="editedtitle" placeholder="edit post title here .. " class="edit_title">
+                <textarea name="editedcontent" placeholder="edit post content here ... " class="edit_content"></textarea>
+                <input type="submit" value="Edit Post" class="edit_button">
             </form>
             <a id="deleteButton" href="/post/{{post.postID}}/delete"> 
                 <input type="button" class="mainpage-btn" value="Delete Post"> 
