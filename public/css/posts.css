@@ -276,7 +276,7 @@ button {
 }
 
 #dislikebtn:active{
-    color: #004eff;
+    color: #ff0000;
     transform: scale(1.2);
 }
 
@@ -291,7 +291,7 @@ button {
 }
 
 #dislikebtn2:active{
-    color: #004eff;
+    color: #ff0000;
     transform: scale(1.2);
 }
 
@@ -518,4 +518,8 @@ div #post_form{
     padding: 5px;
     font-weight: bold;
     font-size: 15px;
+}
+
+.currentuser, .replyid, .postid{
+    display: none;
 }

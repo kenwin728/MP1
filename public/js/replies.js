@@ -1,3 +1,29 @@
+document.addEventListener("DOMContentLoaded", async function (event) {
+    var likebtn = document.getElementById("likebtn");
+    var dislikebtn = document.getElementById("dislikebtn");
+    var currentuser = document.getElementsByClassName("currentuser");
+    var postid = document.getElementsByClassName("postid");
+    const response = await fetch('/getCheckPostLikeBtn?postID=' + postid.value + '&currentuser=' + currentuser.value, {
+        method: 'GET'
+    });
+    if (response.status == 400) {
+        // do something
+        likebtn.style.color='#004eff';
+    } else if (response.status == 200){
+        console.log('ok');
+        likebtn.style.color='#fff';
+    }
+    const response2 = await fetch('/getCheckPostDislikeBtn?replyID=' + postid.value + '&currentuser=' + currentuser.value, {
+        method: 'GET'
+    });
+    if (response2.status == 400) {
+        // do something
+        dislikebtn.style.color='#ff0000';
+    } else if (response2.status == 200){
+        console.log('ok');
+        dislikebtn.style.color='#fff';
+    }
+});
 //Comment
 function showComment(){
     var commentArea = document.getElementById("comment-area");

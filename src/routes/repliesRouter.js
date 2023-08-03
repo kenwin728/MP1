@@ -7,6 +7,10 @@ const db = getDb();
 const replies = db.collection("replies");
 const posts = db.collection("posts");
 const users = db.collection("users");
+const replylikes = db.collection("replylikes");
+const replydislikes = db.collection("replydislikes");
+const postlikes = db.collection("postlikes");
+const postdislikes = db.collection("postdislikes");
 
 repliesRouter.get("/replies/:postID", async (req, res) => {
     try{
@@ -70,8 +74,24 @@ repliesRouter.get("/replies/:postID/currentuser/:username", async (req, res) => 
 repliesRouter.get("/upvotepost/:postID/currentuser/:username", async (req, res) => {
     try{
         const postID = parseInt(req.params.postID);
-        const result = await posts.updateOne({postID: postID},{$inc: {upvote: 1}});
-        res.redirect(`/replies/${postID}/currentuser/${req.params.username}`);
+        const currentuser = req.params.username;
+        const likedata = await postlikes.findOne({postID: postID, username: currentuser});
+        const dislikedata = await postdislikes.findOne({postID: postID, username: currentuser});
+        if (likedata){
+            const decrementpostlikes = await posts.updateOne({postID: postID},{$inc: {upvote: -1}});
+            const deletepostlike = await postlikes.deleteOne({postID: postID, username: currentuser});
+        }
+        else if (dislikedata){
+            const incrementpostlikes = await posts.updateOne({postID: postID},{$inc: {upvote: 1}});
+            const decrementpostdislikes = await posts.updateOne({postID: postID},{$inc: {downvote: -1}});
+            const deletepostdislike = await postdislikes.deleteOne({postID: postID, username: currentuser});
+            const addpostlike = await postlikes.insertOne({postID: postID, username: currentuser});
+        }
+        else{
+            const incrementpostlikes = await posts.updateOne({postID: postID},{$inc: {upvote: 1}});
+            const addpostlike = await postlikes.insertOne({postID: postID, username: currentuser});
+        }
+        res.redirect(`/replies/${postID}/currentuser/${currentuser}`);
     } catch(err){
         console.error(err);
     }
@@ -81,8 +101,24 @@ repliesRouter.get("/upvotepost/:postID/currentuser/:username", async (req, res) 
 repliesRouter.get("/downvotepost/:postID/currentuser/:username", async (req, res) => {
     try{
         const postID = parseInt(req.params.postID);
-        const result = await posts.updateOne({postID: postID},{$inc: {downvote: 1}});
-        res.redirect(`/replies/${postID}/currentuser/${req.params.username}`);
+        const currentuser = req.params.username;
+        const likedata = await postlikes.findOne({postID: postID, username: currentuser});
+        const dislikedata = await postdislikes.findOne({postID: postID, username: currentuser});
+        if (dislikedata){
+            const decrementpostdislikes = await posts.updateOne({postID: postID},{$inc: {downvote: -1}});
+            const deletepostdislike = await postdislikes.deleteOne({postID: postID, username: currentuser});
+        }
+        else if (likedata){
+            const incrementpostdislikes = await posts.updateOne({postID: postID},{$inc: {downvote: 1}});
+            const decrementpostlikes = await posts.updateOne({postID: postID},{$inc: {upvote: -1}});
+            const deletepostlike = await postlikes.deleteOne({postID: postID, username: currentuser});
+            const addpostdislike = await postdislikes.insertOne({postID: postID, username: currentuser});
+        }
+        else{
+            const incrementpostdislikes = await posts.updateOne({postID: postID},{$inc: {downvote: 1}});
+            const addpostdislike = await postdislikes.insertOne({postID: postID, username: currentuser});
+        }
+        res.redirect(`/replies/${postID}/currentuser/${currentuser}`);
     } catch(err){
         console.error(err);
     }
@@ -92,10 +128,27 @@ repliesRouter.get("/downvotepost/:postID/currentuser/:username", async (req, res
 repliesRouter.get("/upvotereply/:replyID/currentuser/:username", async (req, res) => {
     try{
         const replyID = parseInt(req.params.replyID);
-        const result = await replies.updateOne({replyID: replyID},{$inc: {upvote: 1}});
+        const currentuser = req.params.username;
+        const likedata = await replylikes.findOne({replyID: replyID, username: currentuser});
+        const dislikedata = await replydislikes.findOne({replyID: replyID, username: currentuser});
+        if (likedata){
+            const decrementreplylikes = await replies.updateOne({replyID: replyID},{$inc: {upvote: -1}});
+            const deletereplylike = await replylikes.deleteOne({replyID: replyID, username: currentuser});
+        }
+        else if (dislikedata){
+            const incrementreplylikes = await replies.updateOne({replyID: replyID},{$inc: {upvote: 1}});
+            const decrementreplydislikes = await replies.updateOne({replyID: replyID},{$inc: {downvote: -1}});
+            const deletereplydislike = await replydislikes.deleteOne({replyID: replyID, username: currentuser});
+            const addreplylike = await replylikes.insertOne({replyID: replyID, username: currentuser});
+        }
+        else{
+            const incrementreplylikes = await replies.updateOne({replyID: replyID},{$inc: {upvote: 1}});
+            const addreplylike = await replylikes.insertOne({replyID: replyID, username: currentuser});
+        }
+
         const reply = await replies.findOne({replyID: replyID});
         console.log(reply);
-        res.redirect(`/replies/${reply.postID}/currentuser/${req.params.username}`);
+        res.redirect(`/replies/${reply.postID}/currentuser/${currentuser}`);
     } catch(err){
         console.error(err);
     }
@@ -105,10 +158,27 @@ repliesRouter.get("/upvotereply/:replyID/currentuser/:username", async (req, res
 repliesRouter.get("/downvotereply/:replyID/currentuser/:username", async (req, res) => {
     try{
         const replyID = parseInt(req.params.replyID);
-        const result = await replies.updateOne({replyID: replyID},{$inc: {downvote: 1}});
+        const currentuser = req.params.username;
+        const likedata = await replylikes.findOne({replyID: replyID, username: currentuser});
+        const dislikedata = await replydislikes.findOne({replyID: replyID, username: currentuser});
+        if (dislikedata){
+            const decrementreplydislikes = await replies.updateOne({replyID: replyID},{$inc: {downvote: -1}});
+            const deletereplydislike = await replydislikes.deleteOne({replyID: replyID, username: currentuser});
+        }
+        else if (likedata){
+            const incrementreplydislikes = await replies.updateOne({replyID: replyID},{$inc: {downvote: 1}});
+            const decrementreplylikes = await replies.updateOne({replyID: replyID},{$inc: {upvote: -1}});
+            const deletereplylike = await replylikes.deleteOne({replyID: replyID, username: currentuser});
+            const addreplydislike = await replydislikes.insertOne({replyID: replyID, username: currentuser});
+        }
+        else{
+            const incrementreplydislikes = await replies.updateOne({replyID: replyID},{$inc: {downvote: 1}});
+            const addreplydislike = await replydislikes.insertOne({replyID: replyID, username: currentuser});
+        }
+
         const reply = await replies.findOne({replyID: replyID});
         console.log(reply);
-        res.redirect(`/replies/${reply.postID}/currentuser/${req.params.username}`);
+        res.redirect(`/replies/${reply.postID}/currentuser/${currentuser}`);
     } catch(err){
         console.error(err);
     }
@@ -124,14 +194,86 @@ repliesRouter.get("/reply/:replyID/delete", async (req, res) => {
         const postID = reply.postID;
         const username = reply.username;
         console.log(reply);
-        const result = await replies.deleteOne({replyID: replyID});
+        const deletereply = await replies.deleteOne({replyID: replyID});
+        //Delete all the likes related to the reply in the replylikes table
+        const deletereplylikes = await replylikes.deleteMany({replyID: replyID});
+        //Delete all the dislikes related to the reply in the replydislikes table
+        const deletereplydislikes = await replydislikes.deleteMany({replyID: replyID});
         //Decrease the number of replies for the post
-        const result2 = await posts.updateOne({postID: postID}, {$inc: {replies: -1}});
+        const decrementpostreplies = await posts.updateOne({postID: postID}, {$inc: {replies: -1}});
         res.redirect(`/replies/${postID}/currentuser/${username}`)
     } catch(err){
         console.error(err);
     }
     
+});
+
+//Check if the reply has been liked by the current user
+repliesRouter.get("/getCheckReplyLikeBtn", async (req, res) => {
+    try{
+        const replyID = req.query.replyID;
+        const currentuser = req.query.currentuser;
+        const result = await replylikes.findOne({replyID: replyID, username: currentuser});
+        if (result){
+            res.sendStatus(400);
+        }
+        else{
+            res.sendStatus(200);
+        }
+    } catch(err){
+        console.error(err);
+    }
+});
+
+//Check if the reply has been disliked by the current user
+repliesRouter.get("/getCheckReplyDislikeBtn", async (req, res) => {
+    try{
+        const replyID = req.query.replyID;
+        const currentuser = req.query.currentuser;
+        const result = await replydislikes.findOne({replyID: replyID, username: currentuser});
+        if (result){
+            res.sendStatus(400);
+        }
+        else{
+            res.sendStatus(200);
+        }
+    } catch(err){
+        console.error(err);
+    }
+});
+
+//Check if the post has been liked by the current user
+repliesRouter.get("/getCheckPostLikeBtn", async (req, res) => {
+    try{
+        const postID = req.query.postID;
+        const currentuser = req.query.currentuser;
+        const result = await postlikes.findOne({postID: postID, username: currentuser});
+        if (result){
+            res.sendStatus(400);
+        }
+        else{
+            res.sendStatus(200);
+        }
+    } catch(err){
+        console.error(err);
+    }
+});
+
+//Check if the post has been disliked by the current user
+repliesRouter.get("/getCheckPostDislikeBtn", async (req, res) => {
+    try{
+        const postID = req.query.postID;
+        const currentuser = req.query.currentuser;
+        const result = await postdislikes.findOne({postID: postID, username: currentuser});
+        if (result){
+            res.sendStatus(400);
+        }
+        else{
+            res.sendStatus(200);
+        }
+    } catch(err){
+        console.error(err);
+    }
 });
 //Edit Reply
 repliesRouter.post("/reply/:replyID/edit", async (req, res) => {

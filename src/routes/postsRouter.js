@@ -6,6 +6,10 @@ const db = getDb();
 const posts = db.collection("posts");
 const users = db.collection("users");
 const replies = db.collection("replies");
+const replylikes = db.collection("replylikes");
+const replydislikes = db.collection("replydislikes");
+const postlikes = db.collection("postlikes");
+const postdislikes = db.collection("postdislikes");
 
 postsRouter.get("/posts", async (req, res) => {
     try{
@@ -41,9 +45,20 @@ postsRouter.get("/post/:postID/delete", async (req, res) => {
         //store the username of the post before deletion for referencing in res.redirect
         const username = post.username;
         console.log(post);
-        const result = await posts.deleteOne({postID: postID});
-        const result2 = await replies.deleteMany({postID: postID});
-        const result3 = await users.updateOne({username: username}, {$inc: {numberofposts: -1}});
+        const deletepost = await posts.deleteOne({postID: postID});
+        //Delete all the likes related to the post in the postlikes table
+        const deletepostlikes = await postlikes.deleteMany({postID: postID});
+        //Delete all the dislikes related to the post in the postdislikes table
+        const deletepostdislikes = await postdislikes.deleteMany({postID: postID});
+        const repliestobedeleted = await replies.find({postID: postID}).toArray();
+        for (const reply of repliestobedeleted){
+            //Delete all the likes related to the reply in the replylikes table
+            const deletereplylikes = await replylikes.deleteMany({replyID: reply.replyID});
+            //Delete all the dislikes related to the reply in the replydislikes table
+            const deletereplydislikes = await replydislikes.deleteMany({replyID: reply.replyID});
+        }
+        const deletereplies = await replies.deleteMany({postID: postID});
+        const decrementnumberofposts = await users.updateOne({username: username}, {$inc: {numberofposts: -1}});
         res.redirect(`/posts/currentuser/${username}`);
     } catch (err){
         console.error(err);
