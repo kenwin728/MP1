@@ -1,10 +1,12 @@
 import { Router } from 'express';
 import { getDb } from '../db/conn.js';
 import alert from 'alert';
+import bcrypt from 'bcrypt';
 
 const registerRouter = Router();
 const db = getDb();
 const users = db.collection("users");
+const SALT_WORK_FACTOR = 10;
 
 registerRouter.get("/register", async (req, res) => {
     res.render("register", {
@@ -23,9 +25,11 @@ registerRouter.post("/register", async (req, res) => {
         }
         else{
             if (req.body.password === req.body.confirmpassword){
+                const salt = await bcrypt.genSalt(SALT_WORK_FACTOR);
+                const hash = await bcrypt.hash(req.body.password, salt);
                 const result = await users.insertOne({
                     username: req.body.username, 
-                    password: req.body.password,
+                    password: hash,
                     description: "",
                     photo: "",
                     numberofposts: 0

@@ -1,6 +1,8 @@
 import { Router } from 'express';
 import { getDb } from '../db/conn.js';
 import alert from 'alert';
+import bcrypt from 'bcrypt';
+
 
 const loginRouter = Router();
 const db = getDb();
@@ -19,7 +21,7 @@ loginRouter.post("/login", async (req, res) => {
         const user = await users.findOne({username: req.body.username});
         console.log(user);
         if (user){
-            if (user.password === req.body.password){
+            if (await bcrypt.compare(req.body.password, user.password)){
                 console.log("Successful Login");
                 res.redirect(`/posts/currentuser/${req.body.username}`);
             }
