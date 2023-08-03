@@ -1,9 +1,10 @@
-document.addEventListener("DOMContentLoaded", async function (event) {
-    var likebtn = document.getElementById("likebtn");
-    var dislikebtn = document.getElementById("dislikebtn");
-    var currentuser = document.getElementsByClassName("currentuser");
-    var postid = document.getElementsByClassName("postid");
-    const response = await fetch('/getCheckPostLikeBtn?postID=' + postid.value + '&currentuser=' + currentuser.value, {
+document.addEventListener("DOMContentLoaded", function (event) {
+    const likebtn = document.getElementById("likebtn");
+    const dislikebtn = document.getElementById("dislikebtn");
+    const currentuser = document.getElementsByClassName("currentuser");
+    const postid = document.getElementsByClassName("postid");
+    console.log("Hello");
+    const response = fetch('/getCheckPostLikeBtn?postID=' + postid.value + '&currentuser=' + currentuser.value, {
         method: 'GET'
     });
     if (response.status == 400) {
@@ -13,7 +14,7 @@ document.addEventListener("DOMContentLoaded", async function (event) {
         console.log('ok');
         likebtn.style.color='#fff';
     }
-    const response2 = await fetch('/getCheckPostDislikeBtn?replyID=' + postid.value + '&currentuser=' + currentuser.value, {
+    const response2 = fetch('/getCheckPostDislikeBtn?replyID=' + postid.value + '&currentuser=' + currentuser.value, {
         method: 'GET'
     });
     if (response2.status == 400) {
