@@ -1,11 +1,11 @@
-document.addEventListener("DOMContentLoaded", function (event){
+async function fetchData(){
     const likebtn = document.getElementById("likebtn2");
     const dislikebtn = document.getElementById("dislikebtn2");
     const currentuser = document.getElementsByClassName("currentuser");
     const replyid = document.getElementsByClassName("replyid");
     console.log("Hi");
     try{
-        const response = fetch('/getCheckReplyLikeBtn?replyID=' + replyid.value + '&currentuser=' + currentuser.value, {
+        const response = await fetch('/getCheckReplyLikeBtn?replyID=' + replyid.value + '&currentuser=' + currentuser.value, {
             method: 'GET'
         });
         if (response.status == 400) {
@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function (event){
             console.log('ok');
             likebtn.style.color='#fff';
         }
-        const response2 = fetch('/getCheckReplyDislikeBtn?replyID=' + replyid.value + '&currentuser=' + currentuser.value, {
+        const response2 = await fetch('/getCheckReplyDislikeBtn?replyID=' + replyid.value + '&currentuser=' + currentuser.value, {
             method: 'GET'
         });
         if (response2.status == 400) {
@@ -28,4 +28,8 @@ document.addEventListener("DOMContentLoaded", function (event){
     } catch (err){
         console.error(err);
     }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    fetchData();
 });

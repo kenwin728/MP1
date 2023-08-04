@@ -7,6 +7,7 @@ const userRouter = Router();
 const db = getDb();
 const users = db.collection("users");
 const posts = db.collection("posts");
+const replies = db.collection("replies");
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -25,10 +26,12 @@ userRouter.get("/user/:username", async (req, res) => {
         const username = req.params.username;
         const user = await users.findOne({username: username});
         const post = await posts.findOne({username: username}, {sort: {postID: -1}});
+        const reply = await replies.findOne({username: username}, {sort: {replyID: -1}});
         res.render("user", {
             title: user.username,
             user: user,
             post: post,
+            reply: reply,
             link: "/posts",
             additionalLink: ""
         });
@@ -45,10 +48,12 @@ userRouter.get("/user/:username/currentuser/:currentuser", async (req, res) => {
             const username = req.params.username;
             const user = await users.findOne({username: username});
             const post = await posts.findOne({username: username}, {sort: {postID: -1}});
+            const reply = await replies.findOne({username: username}, {sort: {replyID: -1}});
             res.render("userwithedit", {
                 title: user.username,
                 user: user,
-                post: post
+                post: post,
+                reply: reply
             });
         } catch(err){
             console.error(err);
@@ -59,10 +64,12 @@ userRouter.get("/user/:username/currentuser/:currentuser", async (req, res) => {
             const username = req.params.username;
             const user = await users.findOne({username: username});
             const post = await posts.findOne({username: username}, {sort: {postID: -1}});
+            const reply = await replies.findOne({username: username}, {sort: {replyID: -1}});
             res.render("user", {
                 title: "user",
                 user: user,
                 post: post,
+                reply: reply,
                 link: `/posts/currentuser/${req.params.currentuser}`,
                 additionalLink: `/currentuser/${req.params.currentuser}`
             });

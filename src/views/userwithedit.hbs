@@ -21,19 +21,29 @@
                         <h3>{{post.views}}<br><span>Views</span></h3>
                         <h3>{{post.date}}<br><span>Date</span></h3>
                     </div>
-                    <div class="container">
-                        <a id="Register" href="/posts/currentuser/{{user.username}}">Back to Homepage...</a>                       </a>
-                    </div>
                 </a>
                 {{else}}
                 <div class="post-title">No post to show...</div>
                 <br> <br>
-                <div class="container">
-                    <a id="Register" href="/posts/currentuser/{{user.username}}"> 
-                        <input type="button" value="Back to mainpage..."> 
-                    </a>
-                </div>
                 {{/if}}
+                <h3>Latest Reply</h3>
+                <hr>
+                {{#if reply}}
+                <a href="/replies/{{reply.postID}}/currentuser/{{user.username}}">
+                    <div class="post-title">{{reply.content}}</div>
+                    <div class="post-info">
+                        <h3>{{reply.upvote}}<br><span>Upvotes</span></h3>
+                        <h3>{{reply.downvote}}<br><span>Downvotes</span></h3>
+                        <h3>{{reply.date}}<br><span>Date</span></h3>
+                    </div>
+                </a>
+                {{else}}
+                <div class="post-title">No replies to show...</div>
+                <br> <br>
+                {{/if}}
+                <div class="container">
+                    <a id="Register" href="/posts/currentuser/{{user.username}}">Back to Homepage...</a>
+                </div>
             </div>
         </div>
     </div>

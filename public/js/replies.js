@@ -1,30 +1,3 @@
-document.addEventListener("DOMContentLoaded", function (event) {
-    const likebtn = document.getElementById("likebtn");
-    const dislikebtn = document.getElementById("dislikebtn");
-    const currentuser = document.getElementsByClassName("currentuser");
-    const postid = document.getElementsByClassName("postid");
-    console.log("Hello");
-    const response = fetch('/getCheckPostLikeBtn?postID=' + postid.value + '&currentuser=' + currentuser.value, {
-        method: 'GET'
-    });
-    if (response.status == 400) {
-        // do something
-        likebtn.style.color='#004eff';
-    } else if (response.status == 200){
-        console.log('ok');
-        likebtn.style.color='#fff';
-    }
-    const response2 = fetch('/getCheckPostDislikeBtn?replyID=' + postid.value + '&currentuser=' + currentuser.value, {
-        method: 'GET'
-    });
-    if (response2.status == 400) {
-        // do something
-        dislikebtn.style.color='#ff0000';
-    } else if (response2.status == 200){
-        console.log('ok');
-        dislikebtn.style.color='#fff';
-    }
-});
 //Comment
 function showComment(){
     var commentArea = document.getElementById("comment-area");
