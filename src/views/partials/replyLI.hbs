@@ -27,13 +27,19 @@
     </div>
 </div>
 {{#if (eq reply.username currentuser)}}
-    <div>
-        <form action="/reply/{{reply.replyID}}/edit" method="post" enctype="application/x-www-form-urlencoded" id="form_rep">
-            <textarea name="reply" placeholder="edit reply here ... " id="edit_reply"></textarea>
-            <input type="submit" value="Edit Reply" class="edit_button_rep">
-        </form>
-        <a id="deleteButton" href="/reply/{{reply.replyID}}/delete"> 
-            <input type="button" class="mainpage-btn" value="Delete Reply"> 
-        </a>
+    <div class="spacing">
+        <div class="makepostcontainer">
+            <button class="editcomment-btn editHide2" id="editcomment-btn" onclick="showEditComment()">Edit your comment</button>
+            <button class="canceleditcomment-btn editHide" id="canceleditcomment-btn" onclick="removeEditComment()">Cancel...</button>
+            <div class="editcomment-area hide" id="editcomment-area">
+                <form action="/reply/{{reply.replyID}}/edit" method="post" enctype="application/x-www-form-urlencoded" id="form_rep">
+                    <textarea name="reply" placeholder="edit reply here ... " id="edit_reply"></textarea>
+                    <input type="submit" value="Edit Reply" class="editcomment_button_rep">
+                </form>
+                <a id="deleteButton" href="/reply/{{reply.replyID}}/delete"> 
+                    <input type="button" class="mainpage-btn" value="Delete Reply"> 
+                </a>
+            </div>
+        </div>
     </div>
 {{/if}}
