@@ -48,7 +48,11 @@
         </div>
     </div>
 </div>
-<div class="edit">
+<div class="showhideeditprofilebtns">
+    <button class="edit-btn hide2" id="edit-btn" onclick="showProfile()">Edit Profile</button>
+    <button class="cancel-btn hide" id="cancel-btn" onclick="removeProfile()">Cancel...</button>
+</div>
+<div class="edit hide" id="edit-area">
     <div class="edit_content">
         <form action="/user/{{user.username}}/upload" method="post" enctype="multipart/form-data">
         <input type="file" name="image" accept="image/*" required>
@@ -61,3 +65,4 @@
     </div>
 
 </div>
+<script src="/static/js/profile.js"></script>

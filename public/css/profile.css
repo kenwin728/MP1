@@ -189,6 +189,52 @@ input[type=file]::file-selector-button {
     color: black;
   }
   
-  input[type=file]::file-selector-button:hover {
+input[type=file]::file-selector-button:hover {
     background: #FF0042;
-  }
+}
+
+.showhideeditprofilebtns{
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.showhideeditprofilebtns button{
+    text-decoration: none;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    color: white;
+    width: 200px;
+}
+
+
+.hide{
+    display: none;
+}
+
+.hide2{
+    display: block;
+}
+
+.edit-btn{
+    color: #fff;
+    padding: 8px 22px;
+    border-radius: 6px;
+    background: #FF0042;
+    transition: all 0.2s ease;
+}
+
+.edit-btn:active{
+    transform: scale(0.96);
+}
+
+.cancel-btn{
+    color: #fff;
+    padding: 8px 22px;
+    border-radius: 6px;
+    background: #FF0042;
+    transition: all 0.2s ease;
+}
+
+.cancel-btn:active{
+    transform: scale(0.96);
+}
