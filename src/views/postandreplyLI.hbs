@@ -36,16 +36,21 @@
         </div>
     </div>
     {{#if (eq post.username currentuser)}}
-        <div>
-            <form action="/post/{{post.postID}}/edit" method="post" enctype="application/x-www-form-urlencoded" id="post_form">
-                <input type="text" name="editedtitle" placeholder="edit post title here .. " class="edit_title">
-                <textarea name="editedcontent" placeholder="edit post content here ... " class="edit_content"></textarea>
+    <div class="makepostcontainer">
+            <button class="editpost-btn editHide2" id="edit-btn" onclick="showEdit()">Edit your post</button>
+            <button class="canceledit-btn editHide" id="canceledit-btn" onclick="removeEdit()">Cancel...</button>
+        <div class="canceledit-area hide" id="edit-area">
+            <form action="/post/{{post.postID}}/edit" method="post" enctype="application/x-www-form-urlencoded" id="edit_form">
+                <input type="text" name="editedtitle" placeholder="edit post title here .. " class="edit_title" required="true">
+                <textarea name="editedcontent" placeholder="edit post content here ... " class="edit_content" required="true"></textarea>
                 <input type="submit" value="Edit Post" class="edit_button">
             </form>
             <a id="deleteButton" href="/post/{{post.postID}}/delete"> 
                 <input type="button" class="mainpage-btn" value="Delete Post"> 
             </a>
         </div>
+    </div>
+
     {{/if}}
     <div class="head2">
         Comments
