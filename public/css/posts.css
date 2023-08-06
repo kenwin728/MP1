@@ -166,7 +166,6 @@ h1{
     background-color: #131415;
     position: relative;
     border-radius: 20px;
-    top: 20px;
     width: 50%;
     margin: auto;
     padding: 20px;
@@ -174,7 +173,7 @@ h1{
 
 .post{
     text-align: center;
-    margin-bottom: 10px;
+    margin-bottom: auto;
 }
 .post button{
     text-decoration: none;
@@ -224,6 +223,15 @@ h1{
 .hide2{
     display: block;
 }
+
+.editHide{
+    display: none;
+}
+
+.editHide2{
+    display: block;
+}
+
 
 /* Upvote */
   
@@ -414,10 +422,6 @@ div form .makepost-btn{
     transition: all 0.2s ease;
 }
 
-.post-btn:active{
-    transform: scale(0.96);
-}
-
 .cancel-btn{
     color: #fff;
     padding: 8px 22px;
@@ -426,35 +430,117 @@ div form .makepost-btn{
     transition: all 0.2s ease;
 }
 
+.editpost-btn{
+    color: #fff;
+    padding: 8px 22px;
+    border-radius: 6px;
+    background: #E53571;
+    transition: all 0.2s ease;
+}
+
+.canceledit-btn{
+    color: #fff;
+    padding: 8px 22px;
+    border-radius: 6px;
+    background: #E53571;
+    transition: all 0.2s ease;
+}
+
+.editcomment-btn{
+    color: #fff;
+    padding: 8px 22px;
+    border-radius: 6px;
+    background: #653870;
+    transition: all 0.2s ease;
+}
+
+.canceleditcomment-btn{
+    color: #fff;
+    padding: 8px 22px;
+    border-radius: 6px;
+    background: #653870;
+    transition: all 0.2s ease;
+}
+
+.post-btn:active{
+    transform: scale(0.96);
+}
+
 .cancel-btn:active{
     transform: scale(0.96);
 }
 
-div .edit_title{
-    width: 200px;
+#edit-area{
+    margin-bottom:20px;
+}
+
+#edit-area form{
+    display: flex;
+    flex-direction: column;
+
+}
+
+#edit-area .edit_title{
     padding: 10px;
-    border-radius: 5px;
-    outline: none;
-    margin-bottom: 10px;
+    border-radius: 10px;
+    color: black;
+    font-family: sans-serif;
     font-weight: bold;
+}
+
+#edit-area textarea{
+    width: 95%;
+    min-height: 80px;
+    padding: 20px;
+    margin-block: 20px;
+    border-radius: 10px;
+    color: black;
     font-family: sans-serif;
 }
 
-div .edit_button{
-    width: 20%;
-    border-radius: 5px;
-    font-size: 13px;
-    color: #fff;
-    background: #000000;
-    
+#edit-area .edit_button{
+    color: white;
+    height: min-content;
+    border: none;
+    width: 15%;
+    padding: 10px;
+    margin-left: 85%;
+    border-radius: 6px;
+    background: #E53571;
+    font-size: 12px;
+    font-weight: normal;
 }
 
-div .edit_button_rep{
-    width: 23%;
+.spacing{
+    margin-bottom: 20px;
+}
+
+#editcomment-area form{
+    display: flex;
+    flex-direction: column;
+}
+
+#editcomment-area textarea{
+    width: 95%;
+    min-height: 50px;
+    padding: 20px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    color: black;
+    font-family: sans-serif;
+}
+
+#editcomment-area .editcomment_button_rep{
+    width: 15%;
     border-radius: 5px;
     font-size: 13px;
-    color: #fff;
-    background: #1079a9;
+    background: #653870;
+    color: white;
+    height: min-content;
+    border: none;
+    padding: 10px;
+    margin-left: 85%;
+    font-weight: normal;
 }
 
 .edit_button:active{
@@ -465,43 +551,12 @@ div .edit_button_rep{
     transform: scale(0.96);
 }
 
-.edit_content{
-    margin-right: 10px;
-    width: 30%;
-    outline: none;
-    border-radius: 5px;
-    padding: 10px 5px;
-    margin-left: 5px;
-    font-weight: bold;
-    margin-left: 10px;
-}
-
-div #edit_reply{
-    width: 200px;
-    padding: 10px;
-    border-radius: 5px;
-    outline: none;
-    margin-bottom: 10px;
-    margin-left: 5px;
-    font-weight: bold;
-    font-family: sans-serif;
-    margin-right: 10px;
-}
 
 div #form_rep{
     display: flex;
     padding: 10px;
     border-radius: 5px;
     margin: 10px;
-    margin-left: 70%;
-}
-
-div #post_form{
-    display: flex;
-    padding: 10px;
-    border-radius: 5px;
-    margin: 10px;
-    margin-left: 70%;
 }
 
 .og_poster{
@@ -514,7 +569,7 @@ div #post_form{
 .head2{
     display: flex;
     background-color: #2C2C2C;
-    margin-top: 10px;
+    margin-top: 20px;
     padding: 5px;
     font-weight: bold;
     font-size: 15px;
